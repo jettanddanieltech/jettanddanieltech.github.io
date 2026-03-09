@@ -21,25 +21,55 @@
             overflow-x: hidden;
         }
 
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--neon-blue);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
         /* Header Section */
         header {
-            height: 70vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-bottom: 2px solid var(--neon-blue);
             background: radial-gradient(circle, #1a1a1a 0%, #0a0a0a 100%);
             padding: 20px;
+            padding-top: 80px; /* Space for nav */
         }
 
         h1 {
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             color: var(--neon-blue);
             margin-bottom: 0;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 8px;
             text-shadow: 0 0 20px rgba(51, 187, 255, 0.6);
         }
 
@@ -49,45 +79,50 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: clamp(0.7rem, 2vw, 1.2rem);
+            margin-top: 10px;
         }
 
         /* Services Section */
         .container {
-            max-width: 1000px;
-            margin: -50px auto 50px auto;
+            max-width: 1100px;
+            margin: -60px auto 50px auto;
             padding: 0 20px;
         }
 
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid #333;
-            padding: 30px;
-            border-radius: 12px;
-            transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 40px;
+            border-radius: 15px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
             border-color: var(--neon-blue);
-            box-shadow: 0 0 25px rgba(51, 187, 255, 0.2);
-            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(51, 187, 255, 0.3);
+            transform: translateY(-15px);
         }
 
         .card h3 {
             color: var(--neon-blue);
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .card p {
-            color: #ccc;
+            color: #bbb;
+            font-size: 0.95rem;
         }
 
         .card ul {
@@ -96,22 +131,23 @@
             color: var(--neon-green);
             font-size: 0.9rem;
             font-weight: bold;
+            margin-top: 20px;
         }
 
         .card li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .card li::before {
-            content: "> ";
+            content: ">> ";
             color: var(--neon-blue);
         }
 
         /* Action Button */
         .cta-btn {
             display: inline-block;
-            margin-top: 30px;
-            padding: 15px 45px;
+            margin-top: 40px;
+            padding: 18px 50px;
             background: transparent;
             color: var(--neon-green);
             border: 2px solid var(--neon-green);
@@ -121,52 +157,64 @@
             border-radius: 5px;
             transition: 0.3s;
             cursor: pointer;
+            letter-spacing: 2px;
         }
 
         .cta-btn:hover {
             background: var(--neon-green);
             color: black;
-            box-shadow: 0 0 25px var(--neon-green);
+            box-shadow: 0 0 30px var(--neon-green);
         }
 
         footer {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             font-size: 0.7rem;
             color: #444;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="mailto:contact@jettanddaniel.tech">Contact</a>
+    </nav>
+
     <header>
         <h1>JETT & DANIEL</h1>
-        <p class="tagline">"Building the Future, One Part at a Time."</p>
-        <a href="mailto:contact@jettanddaniel.tech" class="cta-btn">Request a Quote</a>
+        <p class="tagline">Building the Future, One Part at a Time.</p>
+        <a href="#services" class="cta-btn">View Services</a>
     </header>
 
-    <div class="container">
+    <div class="container" id="services">
         <div class="services">
             <div class="card">
                 <h3>Hardware & Systems</h3>
-                <p>High-performance PC builds and maintenance by Daniel. We fix the slow and build the fast.</p>
+                <p>High-performance PC builds, component diagnostics, and custom cooling solutions by Daniel.</p>
                 <ul>
-                    <li>Custom Gaming Builds</li>
-                    <li>Hardware Diagnostics</li>
-                    <li>Professional PC Cleaning</li>
-                    <li>Thermal Paste Service</li>
+                    <li>Custom Gaming Rigs</li>
+                    <li>Hardware Repairs</li>
+                    <li>Professional Cleaning</li>
+                    <li>System Upgrades</li>
                 </ul>
             </div>
 
             <div class="card">
                 <h3>Software & Design</h3>
-                <p>Clean code and responsive web design by Jett. Bringing your business online with modern tech.</p>
+                <p>Modern, responsive web development and custom software solutions designed by Jett.</p>
                 <ul>
-                    <li>Custom Website Design</li>
-                    <li>Portfolio Creation</li>
-                    <li>Hosting & SEO</li>
+                    <li>Web Design & Hosting</li>
+                    <li>Custom UI/UX</li>
+                    <li>SEO Optimization</li>
                     <li>Software Troubleshooting</li>
                 </ul>
             </div>
@@ -174,7 +222,7 @@
     </div>
 
     <footer>
-        VER: 2.0 // STATUS: STABLE // &copy; 2026 JETT & DANIEL TECH
+        VER: 2.1 // STATUS: STABLE // &copy; 2026 JETT & DANIEL TECH
     </footer>
 
 </body>
