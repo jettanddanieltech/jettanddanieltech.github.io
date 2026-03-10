@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J&D | Techy AI v2.0</title>
+    <title>J&D | Techy AI</title>
     <style>
         :root {
             --neon-blue: #33BBFF;
             --neon-green: #00FF88;
             --bg-dark: #0a0a0a;
-            --terminal-gray: #1a1a1a;
         }
 
         body {
             background-color: var(--bg-dark);
-            color: #ddd;
-            font-family: 'Courier New', Courier, monospace;
+            color: #ffffff !important; /* Forces text to be white */
+            font-family: 'Courier New', monospace;
             margin: 0;
-            padding-top: 80px;
-            height: 100vh;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
-        /* Nav */
+        /* Nav Bar */
         nav {
             position: fixed;
             top: 0;
@@ -47,35 +46,30 @@
             font-family: sans-serif;
         }
 
-        /* Terminal UI */
-        .terminal-container {
+        /* Terminal Window */
+        .terminal {
             width: 90%;
             max-width: 800px;
-            height: 70vh;
-            background: var(--terminal-gray);
+            margin-top: 100px;
+            background: #111;
             border: 2px solid #333;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 30px rgba(0,0,0,1);
-            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,1);
         }
 
-        .terminal-header {
-            background: #333;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            font-family: sans-serif;
+        .t-header {
+            background: #222;
+            padding: 10px;
+            color: var(--neon-blue);
             font-size: 0.8rem;
-            color: white;
+            border-bottom: 1px solid #333;
+            font-family: sans-serif;
         }
 
-        #chat-logs {
-            flex-grow: 1;
+        #logs {
+            height: 400px;
             padding: 20px;
             overflow-y: auto;
-            border-bottom: 1px solid #333;
-        }
-
-        .bot-msg { color: var(--neon-blue); margin
+            text-align:
