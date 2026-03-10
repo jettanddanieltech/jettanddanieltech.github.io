@@ -3,58 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J&D | Chat with Techy</title>
+    <title>J&D | Techy AI v2.0</title>
     <style>
-        :root { --neon-blue: #33BBFF; --neon-green: #00FF88; --bg-dark: #0a0a0a; }
-        body { background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding-top: 100px; display: flex; flex-direction: column; align-items: center; height: 100vh; }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid var(--neon-blue); display: flex; justify-content: center; padding: 15px 0; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        #chat-window { width: 90%; max-width: 600px; background: #161616; border: 2px solid var(--neon-blue); border-radius: 10px; flex-grow: 0.5; display: flex; flex-direction: column; overflow: hidden; }
-        #messages { padding: 20px; flex-grow: 1; overflow-y: auto; text-align: left; }
-        #input-area { display: flex; border-top: 1px solid #333; }
-        #user-input { flex-grow: 1; padding: 15px; background: #000; border: none; color: white; outline: none; }
-        button { padding: 15px; background: var(--neon-blue); border: none; font-weight: bold; cursor: pointer; }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="hardware.html">Hardware</a>
-        <a href="software.html">Software</a>
-        <a href="dictionary.html">Dictionary</a>
-        <a href="techy.html">Techy AI</a>
-    </nav>
-    <h1 style="color:var(--neon-blue)">CHAT WITH TECHY</h1>
-    <div id="chat-window">
-        <div id="messages"><p><strong>Techy:</strong> System Online. I know everything about this site. Ask me anything!</p></div>
-        <div id="input-area">
-            <input type="text" id="user-input" placeholder="Ask about Daniel, Jett, or Services..." onkeypress="if(event.key==='Enter') sendMessage()">
-            <button onclick="sendMessage()">SEND</button>
-        </div>
-    </div>
-    <script>
-        function sendMessage() {
-            let input = document.getElementById('user-input');
-            let msgs = document.getElementById('messages');
-            if(!input.value) return;
-
-            msgs.innerHTML += `<p style="color:var(--neon-green)"><strong>You:</strong> ${input.value}</p>`;
-            let query = input.value.toLowerCase();
-            let response = "I'm not sure about that. Try asking Jett or Daniel!";
-
-            if(query.includes("daniel")) response = "Daniel is our Hardware Specialist. He builds the best PCs and fixes broken parts.";
-            if(query.includes("jett")) response = "Jett is our Lead Developer. He codes custom websites and manages the tech stack.";
-            if(query.includes("hardware")) response = "Check out the Hardware page to see Daniel's PC repair and build services.";
-            if(query.includes("software") || query.includes("web")) response = "Visit the Software page to see how Jett can build your next website.";
-            if(query.includes("dictionary")) response = "The Dictionary page has all the tech terms you need to know!";
-            if(query.includes("contact")) response = "You can contact us via the email link in the footer or on the Home page.";
-
-            setTimeout(() => {
-                msgs.innerHTML += `<p><strong>Techy:</strong> ${response}</p>`;
-                msgs.scrollTop = msgs.scrollHeight;
-            }, 500);
-            input.value = "";
+        :root {
+            --neon-blue: #33BBFF;
+            --neon-green: #00FF88;
+            --bg-dark: #0a0a0a;
+            --terminal-gray: #1a1a1a;
         }
-    </script>
-</body>
-</html>
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ddd;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding-top: 80px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--neon-blue);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: sans-serif;
+        }
+
+        /* Terminal UI */
+        .terminal-container {
+            width: 90%;
+            max-width: 800px;
+            height: 70vh;
+            background: var(--terminal-gray);
+            border: 2px solid #333;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(0,0,0,1);
+            position: relative;
+        }
+
+        .terminal-header {
+            background: #333;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        #chat-logs {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid #333;
+        }
+
+        .bot-msg { color: var(--neon-blue); margin
