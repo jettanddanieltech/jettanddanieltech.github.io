@@ -3,29 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J&D Tech | Home</title>
+    <title>J&D | TERMINAL</title>
     <style>
-        :root { --neon-blue: #33BBFF; --neon-green: #00FF88; --bg-dark: #0a0a0a; }
-        body { background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); border-bottom: 1px solid var(--neon-blue); display: flex; justify-content: center; padding: 15px 0; z-index: 1000; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        nav a:hover { color: var(--neon-blue); }
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        h1 { font-size: 4rem; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 8px; margin: 0; text-shadow: 0 0 20px rgba(51, 187, 255, 0.5); }
-        .tagline { color: var(--neon-green); text-transform: uppercase; letter-spacing: 3px; margin-top: 10px; }
+        /* CORE SYSTEM - NON-BLOCKED */
+        body {
+            background-color: #000000 !important;
+            color: #00FF88 !important; /* Neon Green */
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Nav Bar */
+        nav {
+            width: 100%;
+            background: #0a0a0a;
+            border-bottom: 2px solid #33BBFF;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #33BBFF;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* System Container */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin-top: 50px;
+            border: 1px solid #222;
+            padding: 20px;
+            background: #050505;
+        }
+
+        h1 { color: #33BBFF; text-transform: uppercase; }
+        
+        .code-box {
+            background: #000;
+            padding: 15px;
+            border-left: 3px solid #00FF88;
+            margin-top: 20px;
+        }
+
+        .blink { animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html">Home</a>
-        <a href="hardware.html">Hardware</a>
-        <a href="software.html">Software</a>
-        <a href="dictionary.html">Dictionary</a>
-        <a href="techy.html">Techy AI</a>
+        <a href="./index.html">HOME</a>
+        <a href="./hardware.html">HARDWARE</a>
+        <a href="./software.html">SOFTWARE</a>
+        <a href="./dictionary.html">DICTIONARY</a>
+        <a href="./diff.html">DIFF AI</a>
     </nav>
-    <header>
-        <h1>JETT & DANIEL</h1>
-        <p class="tagline">The Future of Tech is Here.</p>
-    </header>
+
+    <div class="container">
+        <h1>JETT & DANIEL TECH</h1>
+        <p>SYSTEM STATUS: <span style="color:white">ONLINE</span></p>
+        
+        <div class="code-box">
+            <p>> Jett: Software & Web Architecture</p>
+            <p>> Daniel: Hardware & System Builds</p>
+            <p>> Use the navigation above to access directories.</p>
+            <p>> Current Directory: /root/home<span class="blink">_</span></p>
+        </div>
+    </div>
+
 </body>
 </html>
