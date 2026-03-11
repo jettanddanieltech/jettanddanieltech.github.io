@@ -2,81 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J&D | TERMINAL</title>
+    <title>J&D | HOME</title>
     <style>
-        /* CORE SYSTEM - NON-BLOCKED */
-        body {
-            background-color: #000000 !important;
-            color: #00FF88 !important; /* Neon Green */
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Nav Bar */
-        nav {
-            width: 100%;
-            background: #0a0a0a;
-            border-bottom: 2px solid #33BBFF;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        nav a {
-            color: #33BBFF;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* System Container */
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin-top: 50px;
-            border: 1px solid #222;
-            padding: 20px;
-            background: #050505;
-        }
-
-        h1 { color: #33BBFF; text-transform: uppercase; }
-        
-        .code-box {
-            background: #000;
-            padding: 15px;
-            border-left: 3px solid #00FF88;
-            margin-top: 20px;
-        }
-
-        .blink { animation: blink 1s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        body { background:#000; color:#00FF88; font-family:monospace; padding:20px; display:flex; flex-direction:column; align-items:center; }
+        nav { width:100%; border-bottom:2px solid #33BBFF; padding:15px; text-align:center; background:#0a0a0a; margin-bottom:30px; }
+        nav a { color:#33BBFF; margin:0 15px; text-decoration:none; font-weight:bold; transition:0.3s; }
+        nav a:hover { color:#00FF88; text-shadow:0 0 8px #00FF88; }
+        .active { color:#00FF88 !important; border-bottom:2px solid #00FF88; padding-bottom:5px; }
+        .box { border:1px solid #222; padding:20px; width:90%; max-width:600px; background:#050505; border-left:4px solid #33BBFF; }
+        h1 { color:#33BBFF; }
     </style>
 </head>
 <body>
-
     <nav>
-        <a href="./hardware.html">Hrdware</a>
-        <a href="./software.html">Software</a>
-        <a href="./dictionary.html">Dictionary</a>
-        <a href="./techy.html">Techy AI</a>
+        <a href="./index.html" class="active">HOME</a>
+        <a href="./hardware.html">HARDWARE</a>
+        <a href="./software.html">SOFTWARE</a>
+        <a href="./dictionary.html">DICTIONARY</a>
+        <a href="./techy.html">TECHY AI</a>
     </nav>
-
-    <div class="container">
+    <div class="box">
         <h1>JETT & DANIEL TECH</h1>
-        <p>SYSTEM STATUS: <span style="color:white">ONLINE</span></p>
-        
-        <div class="code-box">
-            <p>> Jett: Software & Web Architecture</p>
-            <p>> Daniel: Hardware & System Builds</p>
-            <p>> Use the navigation above to access directories.</p>
-            <p>> Current Directory: /root/home<span class="blink">_</span></p>
-        </div>
+        <p>> STATUS: ONLINE</p>
+        <p>> LOCATION: MAIN_CORE</p>
+        <p style="color:#888">> Pro Tech Solutions & Web Development.</p>
     </div>
-
 </body>
 </html>
