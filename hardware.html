@@ -2,30 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>J&D | HARDWARE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware | Jett & Daniel Tech</title>
     <style>
-        body { background:#000; color:#00FF88; font-family:monospace; padding:20px; display:flex; flex-direction:column; align-items:center; }
-        nav { width:100%; border-bottom:2px solid #33BBFF; padding:15px; text-align:center; background:#0a0a0a; margin-bottom:30px; }
-        nav a { color:#33BBFF; margin:0 15px; text-decoration:none; font-weight:bold; transition:0.3s; }
-        nav a:hover { color:#00FF88; text-shadow:0 0 8px #00FF88; }
-        .active { color:#00FF88 !important; border-bottom:2px solid #00FF88; padding-bottom:5px; }
-        .box { border:1px solid #222; padding:20px; width:90%; max-width:600px; background:#050505; border-left:4px solid #33BBFF; }
-        h1 { color:#33BBFF; }
+        :root { --neon: #33BBFF; --bg: #0f0f0f; }
+        body { background: var(--bg); color: white; font-family: sans-serif; margin: 0; padding-top: 80px; }
+        nav { background: rgba(0,0,0,0.9); padding: 20px; position: fixed; top: 0; width: 100%; border-bottom: 2px solid var(--neon); text-align: center;}
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .container { padding: 40px; max-width: 800px; margin: auto; }
+        h1 { color: var(--neon); }
     </style>
 </head>
 <body>
     <nav>
-        <a href="./index.html">HOME</a>
-        <a href="./hardware.html" class="active">HARDWARE</a>
-        <a href="./software.html">SOFTWARE</a>
-        <a href="./dictionary.html">DICTIONARY</a>
-        <a href="./techy.html">TECHY AI</a>
+        <a href="index.html">Home</a>
+        <a href="hardware.html">Hardware</a>
+        <a href="software.html">Software</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="techy.html">Techy AI</a>
     </nav>
-    <div class="box">
-        <h1>HARDWARE_LAB</h1>
-        <p>> LEAD: DANIEL</p>
-        <p>> SERVICES: CUSTOM PC BUILDS, REPAIRS, HARDWARE DIAGNOSTICS.</p>
-        <p style="color:#888">> Scanning for hardware issues...</p>
+    <div class="container">
+        <h1>Hardware Services</h1>
+        <ul>
+            <li>Phone Battery Replacement</li>
+            <li>PC Component Upgrades</li>
+            <li>Custom RGB Builds</li>
+        </ul>
     </div>
 </body>
 </html>
