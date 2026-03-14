@@ -4,81 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorials | Jett & Daniel Tech</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        :root {
+            --neon-blue: #33BBFF;
+            --bg-dark: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text-main: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-top: 70px;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            border-bottom: 2px solid var(--neon-blue);
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            color: var(--neon-blue);
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
         .tutorial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            gap: 25px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
         }
+
         .tutorial-card {
-            background: #1a1a1a;
-            border: 2px solid #33BBFF; /* Use your neon blue here */
-            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
         }
+
         .tutorial-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #33BBFF;
-        }
-        .card-content {
-            padding: 15px;
-        }
-        .tag {
-            background: #33BBFF;
-            color: black;
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .video-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #000;
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="tutorials.html" class="active">Tutorials</a>
-        <a href="dictionary.html">Dictionary</a>
-    </nav>
-
-    <header>
-        <h1>Tech Tutorials</h1>
-        <p>Learn hardware repair and web dev from the pros.</p>
-    </header>
-
-    <section class="tutorial-grid">
-        <article class="tutorial-card">
-            <div class="video-container">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="card-content">
-                <span class="tag">HARDWARE</span>
-                <h3>Battery Replacement 101</h3>
-                <p>Why phone batteries fail and how to swap them safely without breaking the screen.</p>
-                <a href="#" class="btn">Read Full Guide</a>
-            </div>
-        </article>
-
-        <article class="tutorial-card">
-            <div class="video-container">
-                <img src="code-thumb.jpg" alt="Coding" style="width:100%">
-            </div>
-            <div class="card-content">
-                <span class="tag">SOFTWARE</span>
-                <h3>Custom CSS Secrets</h3>
-                <p>How to use neon glow effects and custom fonts to make your site stand out.</p>
-                <a href="#" class="btn">Read Full Guide</a>
-            </div>
-        </article>
-    </section>
-
-</body>
-</html>
