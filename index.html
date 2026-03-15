@@ -5,96 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JETT & DANIEL TECH | MAIN_CORE</title>
     <style>
-        :root {
-            --neon-blue: #33BBFF;
-            --terminal-green: #00FF41;
-            --bg-dark: #000000;
-        }
-
         body {
-            background-color: var(--bg-dark);
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            overflow: hidden;
         }
-
         nav {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 20px;
             position: fixed;
             top: 0;
             width: 100%;
-            border-bottom: 2px solid var(--neon-blue);
+            padding: 20px;
             text-align: center;
-            z-index: 1000;
+            border-bottom: 2px solid #33BBFF;
+            background: #000;
         }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        nav a:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        .main-frame {
-            border-left: 4px solid var(--neon-blue);
-            padding: 20px 40px;
-            background: rgba(10, 10, 10, 0.8);
-            max-width: 600px;
-            width: 90%;
-        }
-
-        h1 {
-            color: var(--neon-blue);
-            font-size: 2.5rem;
-            margin: 0 0 20px 0;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .status-line {
-            font-size: 1.2rem;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .status-line span {
-            color: var(--terminal-green);
-            margin-left: 10px;
-            font-weight: bold;
-        }
-
-        .description {
-            margin-top: 20px;
-            color: #aaaaaa;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: var(--neon-blue);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: 5px;
-        }
-
-        @keyframes blink {
-            0% { opacity: 0; }
-            50% { opacity:
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .frame { border-left: 4px solid #33BBFF; padding: 20px; max-width: 500px; }
+        h1 { color: #33BBFF; margin: 0; }
+        .green { color: #00FF41; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="hardware.html">HARDWARE</a>
+        <a href="software.html">SOFTWARE</a>
+        <a href="tutorials.html">TUTORIALS</a>
+        <a href="dictionary.html">DICTIONARY</a>
+    </nav>
+    <div class="frame">
+        <h1>JETT & DANIEL TECH</h1>
+        <p>> STATUS: <span class="green">ONLINE</span></p>
+        <p>> LOCATION: <span class="green">MAIN_CORE</span></p>
+        <p>> Pro Tech Solutions & Web Development.</p>
+    </div>
+</body>
+</html>
