@@ -2,63 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TECHTORIALS // SOFTWARE_DEV</title>
+    <title>TECHTORIALS // SOFTWARE</title>
     <style>
-        body { background: #000; color: #33BBFF; font-family: 'Courier New', monospace; margin: 0; display: flex; height: 100vh; overflow: hidden; }
-        
-        /* Side Code Stream */
-        .sidebar { width: 250px; border-right: 1px solid #111; padding: 20px; font-size: 10px; color: #114466; overflow: hidden; white-space: nowrap; }
-        
-        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; }
-        .header { border-bottom: 2px solid #33BBFF; margin-bottom: 30px; }
-        
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .project-card { background: #050505; border: 1px solid #111; padding: 20px; position: relative; transition: 0.3s; }
-        .project-card:hover { border-color: #00FF41; transform: translateY(-5px); }
-        .project-card h3 { color: #00FF41; margin-top: 0; }
-        .tag { font-size: 10px; background: #111; padding: 3px 8px; border-radius: 3px; margin-right: 5px; }
-        
-        .nav { position: fixed; bottom: 20px; right: 20px; color: #33BBFF; text-decoration: none; border: 1px solid #33BBFF; padding: 10px; background: #000; }
+        :root { --bg: #000; --blue: #33BBFF; }
+        body { background: var(--bg); color: #ccc; font-family: 'Courier New', monospace; margin: 0; }
+        .nav-header { background: #050505; border-bottom: 1px solid var(--blue); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-header a { color: #eee; text-decoration: none; font-size: 12px; }
+        .nav-header .active { color: var(--blue); border-bottom: 1px solid var(--blue); }
+
+        .container { padding: 40px; }
+        .repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .project-card { border: 1px solid #222; padding: 20px; background: #050505; transition: 0.3s; }
+        .project-card:hover { border-color: var(--blue); }
+        .tag { font-size: 10px; color: var(--blue); border: 1px solid var(--blue); padding: 2px 5px; margin-right: 5px; }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div>01010110_INIT_SOFTWARE_PROTO</div>
-        <div>const app = express();</div>
-        <div>app.listen(3000, () => {</div>
-        <div>console.log('PORT_3000_ACTIVE');</div>
-        <div>// RECURSIVE_SCRIPTS_RUNNING</div>
-        <div>01010110_INIT_SOFTWARE_PROTO</div>
-        <div>// [CONTINUE_STREAM]</div>
+    <div class="nav-header">
+        <a href="/" style="font-weight:bold; color:var(--blue)">[ TECHTORIALS_CORE ]</a>
+        <div style="display:flex; gap:20px;">
+            <a href="/tutorials">REPAIRS</a>
+            <a href="/software" class="active">SOFTWARE</a>
+            <a href="/techy">AI_DB</a>
+            <a href="/dictionary">DICT</a>
+        </div>
     </div>
 
-    <div class="main-content">
-        <div class="header">
-            <h1>SOFTWARE_ENGINEERING_REPOSITORY</h1>
-            <p style="color: #555;">> ARCHIVING_WEB_DEVELOPMENT_PROJECTS...</p>
-        </div>
-
-        <div class="project-grid">
+    <div class="container">
+        <h1>PROJECT_REPOSITORY</h1>
+        <div class="repo-grid">
             <div class="project-card">
-                <h3>TECHTORIALS_V1</h3>
-                <p>The core terminal-based website structure built with HTML5, CSS3, and JavaScript.</p>
+                <h3 style="color:#fff">J_D_OS_v4</h3>
+                <p>Custom terminal-styled web interface for tech repair documentation.</p>
                 <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
             </div>
-            
-            <div class="project-card">
-                <h3>DICTIONARY_API_TOOL</h3>
-                <p>A searchable database tool for hardware technicians and AI researchers.</p>
-                <span class="tag">CLEAN_URLS</span><span class="tag">JSON</span>
             </div>
-
-            <div class="project-card">
-                <h3>GAMES_EMULATOR_HUB</h3>
-                <p>A custom interface for hosting and playing Retro Bowl and other web-based games.</p>
-                <span class="tag">EMULATION</span><span class="tag">GAMES</span>
-            </div>
-        </div>
     </div>
-
-    <a href="/" class="nav">BACK_TO_CORE</a>
 </body>
 </html>
