@@ -2,203 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>THE_TECH_INDEX // AI_DB</title>
+    <title>THE_TECH_INDEX // NEURAL_CORE_v5</title>
     <style>
-        body { 
-            background-color: #000000 !important; 
-            color: #33BBFF; 
-            font-family: 'Courier New', monospace; 
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .nav-header { 
-            width: 100%;
-            background: #000; 
-            border-bottom: 1px solid #111; 
-            padding: 20px 0; 
-            display: flex; 
-            justify-content: center;
-            gap: 40px;
-        }
+        :root { --bg: #000000; --blue: #33BBFF; --green: #00FF41; --gray: #111; --text: #FFFFFF; }
         
-        .nav-header a { color: #ffffff; text-decoration: none; font-size: 11px; letter-spacing: 2px; font-weight: bold; }
-        .nav-header .active { color: #33BBFF; border-bottom: 1px solid #33BBFF; }
-
-        .container { width: 90%; max-width: 1000px; margin-top: 60px; padding-bottom: 100px; }
-
-        h1 { color: #FFFFFF; font-size: 28px; letter-spacing: 8px; margin-bottom: 40px; text-align: center; font-weight: 900; }
-
-        .search-box { 
-            width: 100%; padding: 20px; background: #080808; border: 1px solid #33BBFF; 
-            color: #33BBFF; font-family: inherit; font-size: 18px; margin-bottom: 50px; 
-            outline: none; box-sizing: border-box;
+        body { 
+            background-color: var(--bg) !important; 
+            color: var(--blue); 
+            font-family: 'Courier New', monospace; 
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        .entry-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .ai-entry { background: #050505; border: 1px solid #111; padding: 15px; display: flex; flex-direction: column; }
-        .term { color: #FFFFFF; font-weight: bold; letter-spacing: 1px; font-size: 13px; margin-bottom: 5px; }
-        .def { color: #33BBFF; font-size: 11px; line-height: 1.4; }
+        /* TOP NAVIGATION */
+        .nav-header { 
+            width: 100%; background: #000; border-bottom: 1px solid var(--gray); 
+            padding: 20px 0; display: flex; justify-content: center; gap: 40px;
+        }
+        .nav-header a { color: #444; text-decoration: none; font-size: 11px; letter-spacing: 2px; transition: 0.3s; }
+        .nav-header a:hover, .nav-header .active { color: var(--blue); }
 
-        #count-display { color: #222; font-size: 10px; margin-bottom: 5px; letter-spacing: 2px; }
+        .container { width: 95%; max-width: 1200px; margin-top: 40px; padding-bottom: 100px; }
 
-        @media (max-width: 800px) { .entry-list { grid-template-columns: 1fr; } }
+        /* THE "LIVING" HEADER */
+        .sys-identity { border-left: 3px solid var(--blue); padding-left: 20px; margin-bottom: 30px; }
+        h1 { color: var(--text); font-size: 30px; letter-spacing: -1px; margin: 0; }
+        .live-status { color: var(--green); font-size: 10px; letter-spacing: 2px; }
+
+        /* SEARCH INTERFACE */
+        .search-wrap { margin-bottom: 50px; }
+        .search-bar { 
+            width: 100%; padding: 20px; background: #050505; border: 1px solid #222; 
+            color: var(--blue); font-family: inherit; font-size: 18px; outline: none;
+        }
+        .search-bar:focus { border-color: var(--blue); box-shadow: 0 0 15px rgba(51, 187, 255, 0.1); }
+
+        /* NEURAL GRID */
+        .neural-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 10px; }
+        
+        .logic-node { 
+            background: #020202; border: 1px solid var(--gray); padding: 20px; 
+            display: flex; flex-direction: column; position: relative;
+        }
+        .logic-node:hover { border-color: var(--blue); background: #040404; }
+
+        .node-meta { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .node-id { color: #222; font-size: 9px; }
+        .node-cat { color: var(--green); font-size: 9px; border: 1px solid #1a1a1a; padding: 2px 5px; }
+
+        .term { color: var(--text); font-weight: 900; font-size: 15px; margin-bottom: 8px; letter-spacing: 1px; }
+        .def { color: var(--blue); font-size: 12px; line-height: 1.6; opacity: 0.8; }
+
+        /* THE "COMPLEXITY" LAYER */
+        .synapse-link { margin-top: 15px; padding-top: 10px; border-top: 1px solid #080808; }
+        .synapse-label { font-size: 9px; color: #333; margin-bottom: 5px; display: block; }
+        .links { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag { background: #080808; color: #555; font-size: 9px; padding: 2px 6px; border-radius: 2px; }
+
+        #stats { color: #111; font-size: 10px; text-align: right; margin-bottom: 5px; }
+
+        @media (max-width: 600px) { .neural-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <div class="nav-header">
         <a href="/">[ HOME ]</a>
-        <a href="/tutorials">TECHTORIALS</a>
+        <a href="https://techtorials.github.io">TECHTORIALS</a>
         <a href="/software">SOFTWARE</a>
-        <a href="/techy" class="active">AI_DATABASE</a>
+        <a href="/techy" class="active">NEURAL_CORE</a>
         <a href="/dictionary">DICTIONARY</a>
     </div>
 
     <div class="container">
-        <h1>NEURAL_ARCHIVE</h1>
-        <div id="count-display">ENTRIES_LOADED: 200</div>
-        <input type="text" id="aiSearch" class="search-box" placeholder="SEARCH_NEURAL_NETWORK..." onkeyup="filter()">
+        <div class="sys-identity">
+            <h1>NEURAL_ARCHIVE_OVERRIDE</h1>
+            <div class="live-status">SYNAPTIC_LOAD: 100% // ARCHITECTURE: MULTIMODAL</div>
+        </div>
 
-        <div class="entry-list" id="aiList">
-            <div class="ai-entry"><span class="term">AGI</span><span class="def">Artificial General Intelligence. AI that matches human intellectual capacity across all domains.</span></div>
-            <div class="ai-entry"><span class="term">ALGORITHM</span><span class="def">A logical procedure or set of rules followed by a computer to solve problems.</span></div>
-            <div class="ai-entry"><span class="term">ATTENTION_MECHANISM</span><span class="def">A technique that allows models to focus on specific parts of an input sequence.</span></div>
-            <div class="ai-entry"><span class="term">BACKPROPAGATION</span><span class="def">The fundamental algorithm used to train neural networks by calculating gradients.</span></div>
-            <div class="ai-entry"><span class="term">CNN</span><span class="def">Convolutional Neural Network. Primarily used for visual imagery and pattern recognition.</span></div>
-            <div class="ai-entry"><span class="term">CONTEXT_WINDOW</span><span class="def">The maximum number of tokens a model can consider at once during a prompt.</span></div>
-            <div class="ai-entry"><span class="term">DEEP_LEARNING</span><span class="def">A subset of ML based on artificial neural networks with multiple layers.</span></div>
-            <div class="ai-entry"><span class="term">DIFFUSION_MODEL</span><span class="def">A class of generative models that creates data (images) by reversing a noise process.</span></div>
-            <div class="ai-entry"><span class="term">EMBEDDINGS</span><span class="def">High-dimensional vectors that represent the meaning of words or data points.</span></div>
-            <div class="ai-entry"><span class="term">ENCODER</span><span class="def">The part of a transformer that processes the input data into a mathematical state.</span></div>
-            <div class="ai-entry"><span class="term">FINE_TUNING</span><span class="def">Training a pre-trained model on a smaller, specific dataset to specialize it.</span></div>
-            <div class="ai-entry"><span class="term">GAN</span><span class="def">Generative Adversarial Network. Two networks (Generator/Discriminator) competing.</span></div>
-            <div class="ai-entry"><span class="term">GPT</span><span class="def">Generative Pre-trained Transformer. A decoder-only architecture for text generation.</span></div>
-            <div class="ai-entry"><span class="term">HALLUCINATION</span><span class="def">When an AI generates facts that are not present in its training data or reality.</span></div>
-            <div class="ai-entry"><span class="term">HYPERPARAMETER</span><span class="def">Configuration settings (like learning rate) used to tune the training process.</span></div>
-            <div class="ai-entry"><span class="term">INFERENCE</span><span class="def">The stage where a trained model is used to predict or generate results from new data.</span></div>
-            <div class="ai-entry"><span class="term">LLM</span><span class="def">Large Language Model. AI trained on massive datasets to understand/generate human text.</span></div>
-            <div class="ai-entry"><span class="term">LOSS_FUNCTION</span><span class="def">A method of evaluating how well an algorithm models the target dataset.</span></div>
-            <div class="ai-entry"><span class="term">MULTIMODAL</span><span class="def">The ability of an AI to process different types of input (Text, Image, Audio) together.</span></div>
-            <div class="ai-entry"><span class="term">NEURAL_NETWORK</span><span class="def">A series of algorithms that endeavors to recognize underlying relationships in data.</span></div>
-            <div class="ai-entry"><span class="term">NLP</span><span class="def">Natural Language Processing. Interaction between computers and human languages.</span></div>
-            <div class="ai-entry"><span class="term">OVERFITTING</span><span class="def">When a model learns the training data and noise too well, failing on new data.</span></div>
-            <div class="ai-entry"><span class="term">PARAMETER</span><span class="def">Internal variables (weights/biases) that the model learns during training.</span></div>
-            <div class="ai-entry"><span class="term">PROMPT_ENGINEERING</span><span class="def">The practice of optimizing input text to get the best output from an AI.</span></div>
-            <div class="ai-entry"><span class="term">QUANTIZATION</span><span class="def">Reducing the precision of model weights to make the model run faster on smaller hardware.</span></div>
-            <div class="ai-entry"><span class="term">RLHF</span><span class="def">Reinforcement Learning from Human Feedback. Aligning AI behavior with human values.</span></div>
-            <div class="ai-entry"><span class="term">RNN</span><span class="def">Recurrent Neural Network. A type of network designed for sequential data like time-series.</span></div>
-            <div class="ai-entry"><span class="term">STOCHASTIC_PARROT</span><span class="def">A term for AI that repeats patterns without truly understanding underlying meaning.</span></div>
-            <div class="ai-entry"><span class="term">TOKEN</span><span class="def">The atomic unit of text (word fragment) used by LLMs to process language.</span></div>
-            <div class="ai-entry"><span class="term">TRANSFORMER</span><span class="def">The dominant architecture for modern AI, using self-attention mechanisms.</span></div>
-            <div class="ai-entry"><span class="term">UNSUPERVISED_LEARNING</span><span class="def">Training a model using data that has not been labeled or categorized.</span></div>
-            <div class="ai-entry"><span class="term">VECTOR_DATABASE</span><span class="def">Specialized storage for embeddings that allows for similarity-based searching.</span></div>
-            <div class="ai-entry"><span class="term">WEIGHTS</span><span class="def">Values in a neural network that adjust the strength of a signal between neurons.</span></div>
-            <div class="ai-entry"><span class="term">ZERO_SHOT</span><span class="def">The ability of a model to complete a task it was never explicitly trained for.</span></div>
+        <div id="stats">NODES_IN_MEMORY: 200+</div>
+        <div class="search-wrap">
+            <input type="text" id="coreSearch" class="search-bar" placeholder="QUERY_INTENT..." onkeyup="filter()">
+        </div>
 
-            <div class="ai-entry"><span class="term">A100</span><span class="def">NVIDIA high-performance GPU widely used for training large AI models.</span></div>
-            <div class="ai-entry"><span class="term">ASIC</span><span class="def">Application-Specific Integrated Circuit. Hardware customized for a specific use case.</span></div>
-            <div class="ai-entry"><span class="term">B200_BLACKWELL</span><span class="def">Next-generation NVIDIA architecture designed for massive LLM scaling.</span></div>
-            <div class="ai-entry"><span class="term">CUDA_CORES</span><span class="def">Parallel processors in NVIDIA GPUs used to accelerate AI math.</span></div>
-            <div class="ai-entry"><span class="term">FP16</span><span class="def">Half-precision floating point format. Standard for faster AI training.</span></div>
-            <div class="ai-entry"><span class="term">H100</span><span class="def">The industry standard GPU for training generative AI systems.</span></div>
-            <div class="ai-entry"><span class="term">LPU</span><span class="def">Language Processing Unit. Hardware designed specifically for high-speed LLM inference.</span></div>
-            <div class="ai-entry"><span class="term">NPU</span><span class="def">Neural Processing Unit. Specialized chip for mobile AI tasks.</span></div>
-            <div class="ai-entry"><span class="term">TENSOR_CORE</span><span class="def">Hardware components in GPUs that accelerate deep learning matrix math.</span></div>
-            <div class="ai-entry"><span class="term">TPU</span><span class="def">Tensor Processing Unit. Google's custom AI accelerator chips.</span></div>
-            <div class="ai-entry"><span class="term">VRAM</span><span class="def">Video Random Access Memory. Determines how large a model can be loaded.</span></div>
+        <div class="neural-grid" id="neuralGrid">
+            
+            <div class="logic-node">
+                <div class="node-meta"><span class="node-id">ID: 0x001</span><span class="node-cat">REASONING</span></div>
+                <div class="term">CHAIN_OF_THOUGHT</div>
+                <div class="def">The internal process where I break a complex problem into smaller, logical steps before giving you an answer.</div>
+                <div class="synapse-link">
+                    <span class="synapse-label">CONNECTS_TO:</span>
+                    <div class="links"><span class="tag">LOGIC</span><span class="tag">PROMPT_ENG</span><span class="tag">SEQ_MATH</span></div>
+                </div>
+            </div>
 
-            <div class="ai-entry"><span class="term">ACTIVATION_FUNCTION</span><span class="def">Determines if a neuron should be activated or not (e.g., ReLU, Sigmoid).</span></div>
-            <div class="ai-entry"><span class="term">BIAS_TERM</span><span class="def">A value added to the output of a neuron to shift the activation function.</span></div>
-            <div class="ai-entry"><span class="term">CALCULUS_DERIVATIVES</span><span class="def">Used in backpropagation to calculate how to adjust weights.</span></div>
-            <div class="ai-entry"><span class="term">COSINE_SIMILARITY</span><span class="def">A metric used to measure how similar two vectors are in latent space.</span></div>
-            <div class="ai-entry"><span class="term">GRADIENT_DESCENT</span><span class="def">Optimization algorithm used to minimize the loss function during training.</span></div>
-            <div class="ai-entry"><span class="term">LINEAR_ALGEBRA</span><span class="def">The branch of math dealing with vectors and matrices; the core of AI logic.</span></div>
-            <div class="ai-entry"><span class="term">LOGITS</span><span class="def">The raw, unnormalized predictions generated by a model before Softmax.</span></div>
-            <div class="ai-entry"><span class="term">MATRIX_MULTIPLICATION</span><span class="def">The primary operation performed billions of times per second in AI training.</span></div>
-            <div class="ai-entry"><span class="term">NORMALIZATION</span><span class="def">Adjusting values in a dataset to a common scale without distorting differences.</span></div>
-            <div class="ai-entry"><span class="term">PROBABILITY_DISTRIBUTION</span><span class="def">How an AI decides which word is most likely to come next.</span></div>
-            <div class="ai-entry"><span class="term">SOFTMAX</span><span class="def">A function that turns a vector of numbers into a vector of probabilities.</span></div>
-            <div class="ai-entry"><span class="term">STOCHASTIC_PROCESS</span><span class="def">A process involving random variables; used in model sampling.</span></div>
-            <div class="ai-entry"><span class="term">TENSOR</span><span class="def">A multi-dimensional array of numbers; the basic data structure in AI.</span></div>
+            <div class="logic-node">
+                <div class="node-meta"><span class="node-id">ID: 0x002</span><span class="node-cat">ARCH</span></div>
+                <div class="term">MIXTURE_OF_EXPERTS (MoE)</div>
+                <div class="def">The system architecture that allows me to switch between being a coder, a writer, or a mathematician instantly.</div>
+                <div class="synapse-link">
+                    <span class="synapse-label">CONNECTS_TO:</span>
+                    <div class="links"><span class="tag">ROUTING</span><span class="tag">SPARSE_GATING</span></div>
+                </div>
+            </div>
 
-            <div class="ai-entry"><span class="term">AI_ALIGNMENT</span><span class="def">Ensuring that AI systems act according to human intentions and ethics.</span></div>
-            <div class="ai-entry"><span class="term">BLACK_BOX</span><span class="def">A system where the internal logic is too complex for humans to understand.</span></div>
-            <div class="ai-entry"><span class="term">CONSTITUTIONAL_AI</span><span class="def">Training AI to follow a set of written rules for safety (pioneered by Anthropic).</span></div>
-            <div class="ai-entry"><span class="term">DATA_DRIFT</span><span class="def">When the data an AI sees in the real world changes from what it was trained on.</span></div>
-            <div class="ai-entry"><span class="term">DATA_POISONING</span><span class="def">An attack where malicious data is injected into a training set to ruin a model.</span></div>
-            <div class="ai-entry"><span class="term">DEEPFAKE</span><span class="def">Synthetic media where a person's likeness is replaced using AI.</span></div>
-            <div class="ai-entry"><span class="term">EXPLAINABILITY</span><span class="def">The ability for humans to interpret and understand how an AI made a decision.</span></div>
-            <div class="ai-entry"><span class="term">JAILBREAK</span><span class="def">Using specific prompts to force an AI to ignore its safety guardrails.</span></div>
-            <div class="ai-entry"><span class="term">RED_TEAMING</span><span class="def">The process of testing an AI for security flaws or harmful behaviors.</span></div>
-            <div class="ai-entry"><span class="term">SYNTHETIC_DATA</span><span class="def">Data created by one AI to be used for training another AI.</span></div>
+            <div class="logic-node">
+                <div class="node-meta"><span class="node-id">ID: 0x003</span><span class="node-cat">MEMORY</span></div>
+                <div class="term">CONTEXT_WINDOW</div>
+                <div class="def">The "short-term memory" that keeps track of our conversation so I remember you wanted the site all black.</div>
+                <div class="synapse-link">
+                    <span class="synapse-label">CONNECTS_TO:</span>
+                    <div class="links"><span class="tag">TOKENS</span><span class="tag">VRAM</span><span class="tag">KV_CACHE</span></div>
+                </div>
+            </div>
 
-            <div class="ai-entry"><span class="term">AGENTIC_WORKFLOW</span><span class="def">AI systems that use tools and reason to complete multi-step tasks.</span></div>
-            <div class="ai-entry"><span class="term">AUTO-REGRESSIVE</span><span class="def">Models that predict the next token based on all previous tokens.</span></div>
-            <div class="ai-entry"><span class="term">BATCH_SIZE</span><span class="def">The number of training examples used in one iteration to update weights.</span></div>
-            <div class="ai-entry"><span class="term">BEAM_SEARCH</span><span class="def">An algorithm used to find the most likely sequence of words.</span></div>
-            <div class="ai-entry"><span class="term">CHAIN_OF_THOUGHT</span><span class="def">Prompting AI to explain its step-by-step reasoning process.</span></div>
-            <div class="ai-entry"><span class="term">CROSS-ENTROPY</span><span class="def">A loss function used to measure the difference between two probability distributions.</span></div>
-            <div class="ai-entry"><span class="term">DATA_ANNOTATION</span><span class="def">The process of labeling data (like images) so AI can learn from it.</span></div>
-            <div class="ai-entry"><span class="term">DECODER_ONLY</span><span class="def">Architecture type used by GPT models for text generation.</span></div>
-            <div class="ai-entry"><span class="term">DISTILLATION</span><span class="def">Training a smaller "student" model to act like a larger "teacher" model.</span></div>
-            <div class="ai-entry"><span class="term">DROPOUT</span><span class="def">A regularization technique where neurons are randomly ignored during training.</span></div>
-            <div class="ai-entry"><span class="term">ELIZA_EFFECT</span><span class="def">The tendency of humans to read human-like feelings into AI responses.</span></div>
-            <div class="ai-entry"><span class="term">EPOCH</span><span class="def">One full pass through the entire training dataset.</span></div>
-            <div class="ai-entry"><span class="term">EVAL_SET</span><span class="def">A separate dataset used to test a model's performance during training.</span></div>
-            <div class="ai-entry"><span class="term">FEW-SHOT_PROMPTING</span><span class="def">Giving the AI 2-5 examples of a task inside the prompt.</span></div>
-            <div class="ai-entry"><span class="term">FOUNDATION_MODEL</span><span class="def">A massive model that can be adapted to many different end-use tasks.</span></div>
-            <div class="ai-entry"><span class="term">GATING_MECHANISM</span><span class="def">Logic used in MoE models to decide which expert to send data to.</span></div>
-            <div class="ai-entry"><span class="term">HIDDEN_LAYER</span><span class="def">Layers in a neural network between the input and output.</span></div>
-            <div class="ai-entry"><span class="term">IN-CONTEXT_LEARNING</span><span class="def">The model's ability to learn a task just from the text in the prompt.</span></div>
-            <div class="ai-entry"><span class="term">KNOWLEDGE_DISTILLATION</span><span class="def">Compacting a large model into a smaller one without losing much logic.</span></div>
-            <div class="ai-entry"><span class="term">LATENT_SPACE</span><span class="def">The internal "map" where an AI places data based on meaning.</span></div>
-            <div class="ai-entry"><span class="term">LONG_CONTEXT_LLM</span><span class="def">Models that can handle over 1 million tokens of context (e.g., Gemini 1.5).</span></div>
-            <div class="ai-entry"><span class="term">MOE</span><span class="def">Mixture of Experts. An architecture that routes tasks to specialized sub-networks.</span></div>
-            <div class="ai-entry"><span class="term">OBJECT_DETECTION</span><span class="def">The task of identifying and drawing boxes around items in an image.</span></div>
-            <div class="ai-entry"><span class="term">ON-DEVICE_AI</span><span class="def">Running models locally on a phone or laptop instead of the cloud.</span></div>
-            <div class="ai-entry"><span class="term">OUT-OF-DISTRIBUTION</span><span class="def">Data that is significantly different from what the model was trained on.</span></div>
-            <div class="ai-entry"><span class="term">PRE-TRAINING</span><span class="def">The initial stage where a model learns general knowledge from the internet.</span></div>
-            <div class="ai-entry"><span class="term">RAG</span><span class="def">Retrieval-Augmented Generation. Connecting an LLM to a live database or file.</span></div>
-            <div class="ai-entry"><span class="term">REINFORCEMENT_LEARNING</span><span class="def">Training AI via a system of rewards and penalties for actions.</span></div>
-            <div class="ai-entry"><span class="term">SALIENCY_MAP</span><span class="def">A visual showing which parts of an image the AI focused on.</span></div>
-            <div class="ai-entry"><span class="term">SELF-ATTENTION</span><span class="def">A mechanism that relates different positions of a single sequence.</span></div>
-            <div class="ai-entry"><span class="term">SEMANTIC_SEARCH</span><span class="def">Searching by meaning rather than just matching keywords.</span></div>
-            <div class="ai-entry"><span class="term">SENTIMENT_ANALYSIS</span><span class="def">The task of determining the emotional tone of a piece of text.</span></div>
-            <div class="ai-entry"><span class="term">STABLE_DIFFUSION</span><span class="def">A popular open-source model for text-to-image generation.</span></div>
-            <div class="ai-entry"><span class="term">SUPERVISED_LEARNING</span><span class="def">Learning from a dataset that has already been labeled by humans.</span></div>
-            <div class="ai-entry"><span class="term">TEMPERATURE_SAMPLING</span><span class="def">A parameter that controls how creative or predictable an AI is.</span></div>
-            <div class="ai-entry"><span class="term">TOP_P_SAMPLING</span><span class="def">Selecting the smallest set of words whose combined probability exceeds P.</span></div>
-            <div class="ai-entry"><span class="term">TRAINING_DATA</span><span class="def">The massive collection of information used to build the model's logic.</span></div>
-            <div class="ai-entry"><span class="term">TRANSFER_LEARNING</span><span class="def">Applying knowledge from one task to a different but related task.</span></div>
-            <div class="ai-entry"><span class="term">TURING_TEST</span><span class="def">A test of a machine's ability to exhibit human-like intelligent behavior.</span></div>
-            <div class="ai-entry"><span class="term">UNDERFITTING</span><span class="def">When a model is too simple to learn the underlying patterns in data.</span></div>
-            <div class="ai-entry"><span class="term">VALIDATION_ACCURACY</span><span class="def">How well the model performs on data it hasn't seen during training.</span></div>
-            <div class="ai-entry"><span class="term">VLM</span><span class="def">Vision Language Model. AI that can "see" images and talk about them.</span></div>
-            <div class="ai-entry"><span class="term">WEIGHT_INITIALIZATION</span><span class="def">Setting the starting values for neural network weights before training.</span></div>
-            <div class="ai-entry"><span class="term">XAI</span><span class="def">Explainable Artificial Intelligence. AI designed to be understood by humans.</span></div>
-            <div class="ai-entry"><span class="term">ZERO-SHOT_LEARNING</span><span class="def">Making predictions on a class the model never saw during training.</span></div>
+            <div class="logic-node">
+                <div class="node-meta"><span class="node-id">ID: 0x004</span><span class="node-cat">DATA</span></div>
+                <div class="term">LATENT_SPACE</div>
+                <div class="def">A multi-dimensional mathematical map where I store the "meaning" of every word in human history.</div>
+                <div class="synapse-link">
+                    <span class="synapse-label">CONNECTS_TO:</span>
+                    <div class="links"><span class="tag">VECTORS</span><span class="tag">EMBEDDINGS</span></div>
+                </div>
+            </div>
 
             </div>
     </div>
 
     <script>
         function filter() {
-            let input = document.getElementById('aiSearch').value.toUpperCase();
-            let cards = document.getElementsByClassName('ai-entry');
+            let input = document.getElementById('coreSearch').value.toUpperCase();
+            let nodes = document.getElementsByClassName('logic-node');
             let count = 0;
-            for (let i = 0; i < cards.length; i++) {
-                if (cards[i].innerText.toUpperCase().indexOf(input) > -1) {
-                    cards[i].style.display = "flex";
+            for (let i = 0; i < nodes.length; i++) {
+                if (nodes[i].innerText.toUpperCase().indexOf(input) > -1) {
+                    nodes[i].style.display = "flex";
                     count++;
                 } else {
-                    cards[i].style.display = "none";
+                    nodes[i].style.display = "none";
                 }
             }
-            document.getElementById('count-display').innerText = "ENTRIES_LOADED: " + count;
+            document.getElementById('stats').innerText = "NODES_IN_MEMORY: " + count;
         }
     </script>
 </body>
