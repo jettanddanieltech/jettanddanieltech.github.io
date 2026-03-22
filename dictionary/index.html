@@ -1,430 +1,873 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JDT // ENCYCLOPEDIA_300</title>
-    <style>
-        :root { --cyan: #00d2ff; --bg: #000; --panel: #0a0a0a; --border: #1a1a1a; --font: 'Courier New', monospace; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; background: var(--bg); color: #fff; font-family: var(--font); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+<div class="pg-label">// ULTIMATE_TECH_INDEX_RAW_DEEP_v5.0 [300_NODES]</div>
 
-        /* NAV BAR */
-        .nav-bar { width: 100%; display: flex; justify-content: center; gap: 15px; padding: 20px 0; border-bottom: 1px solid var(--border); flex-shrink: 0; background: #000; }
-        .nav-item { color: #444; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
-        .nav-item:active { color: var(--cyan); }
+<div class="search-container" style="position: sticky; top: 0; background: var(--bg); z-index: 100; padding: 10px 0;">
+    <input type="text" id="dict-in" placeholder="SEARCH_DATABASE (e.g. MOSFET, KERNEL, 5G)..." oninput="searchDict()" style="width: 100%; background: #000; border: 1px solid var(--border); padding: 15px; color: #fff; font-family: var(--mono); font-size: 0.9rem; outline: none; border-radius: 4px;">
+</div>
 
-        /* SEARCH SECTION */
-        .search-container { padding: 20px; border-bottom: 1px solid #111; flex-shrink: 0; background: #000; }
-        .search-bar { width: 100%; background: #080808; border: 1px solid var(--cyan); padding: 18px; color: var(--cyan); font-family: var(--font); font-size: 1rem; outline: none; box-shadow: 0 0 10px rgba(0,210,255,0.1); border-radius: 0; }
-        
-        /* LIST SECTION */
-        #dict-list { flex-grow: 1; overflow-y: auto; padding: 20px; scroll-behavior: smooth; }
-        .entry { border-left: 3px solid var(--cyan); background: var(--panel); padding: 15px; margin-bottom: 15px; transition: 0.2s; border-radius: 2px; }
-        .entry-word { color: #fff; font-weight: 900; letter-spacing: 2px; font-size: 0.95rem; margin-bottom: 5px; text-transform: uppercase; }
-        .entry-def { color: #777; font-size: 0.8rem; line-height: 1.5; }
-        .counter { padding: 10px; font-size: 0.6rem; color: #333; text-align: center; letter-spacing: 2px; background: #000; border-top: 1px solid #111; }
-        
-        /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: var(--cyan); }
-    </style>
-</head>
-<body>
-
-    <nav class="nav-bar">
-        <a href="index.html" style="color:#fff; border:1px solid #333; padding:0 5px; text-decoration:none;">HOME</a>
-        <a href="dictionary.html" class="nav-item" style="color:var(--cyan)">DICT</a>
-        <a href="hardware.html" class="nav-item">HARD</a>
-        <a href="software.html" class="nav-item">SOFT</a>
-        <a href="ai.html" class="nav-item">AI</a>
-        <a href="tutorials.html" class="nav-item">TUTS</a>
-    </nav>
-
-    <div class="search-container">
-        <input type="text" id="search-input" class="search-bar" placeholder="SEARCH_DATABASE..." onkeyup="search()">
+<div id="dict-results" class="dict-container" style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
+    
+    <div class="dict-entry" data-term="oled screen display organic">
+        <div class="term">OLED</div>
+        <div class="def">Organic Light Emitting Diode. Pixels create their own light for perfect blacks.</div>
+    </div>
+    <div class="dict-entry" data-term="amoled display samsung phone">
+        <div class="term">AMOLED</div>
+        <div class="def">Active Matrix OLED. Faster refresh rates and better power efficiency for mobile.</div>
+    </div>
+    <div class="dict-entry" data-term="lcd backlight screen display">
+        <div class="term">LCD</div>
+        <div class="def">Liquid Crystal Display. Uses a backlight passed through crystals to create images.</div>
+    </div>
+    <div class="dict-entry" data-term="ips monitor color viewing angle">
+        <div class="term">IPS</div>
+        <div class="def">In-Plane Switching. LCD tech with superior color accuracy and wide viewing angles.</div>
+    </div>
+    <div class="dict-entry" data-term="digitizer glass touch sensor">
+        <div class="term">DIGITIZER</div>
+        <div class="def">The conductive glass layer that converts touch input into digital coordinates.</div>
+    </div>
+    <div class="dict-entry" data-term="soc chip processor die system">
+        <div class="term">SoC</div>
+        <div class="def">System on a Chip. Houses CPU, GPU, RAM, and Modem on a single silicon die.</div>
+    </div>
+    <div class="dict-entry" data-term="cpu processor brain logic">
+        <div class="term">CPU</div>
+        <div class="def">Central Processing Unit. The primary hardware that executes computing instructions.</div>
+    </div>
+    <div class="dict-entry" data-term="gpu graphics video card render">
+        <div class="term">GPU</div>
+        <div class="def">Graphics Processing Unit. Optimized for parallel processing of pixels and 3D data.</div>
+    </div>
+    <div class="dict-entry" data-term="npu ai neural engine intelligence">
+        <div class="term">NPU</div>
+        <div class="def">Neural Processing Unit. Hardware dedicated to accelerating machine learning tasks.</div>
+    </div>
+    <div class="dict-entry" data-term="ram memory volatile storage multitasking">
+        <div class="term">RAM</div>
+        <div class="def">Random Access Memory. High-speed volatile storage for currently active apps.</div>
+    </div>
+    <div class="dict-entry" data-term="vram video ram graphics memory">
+        <div class="term">VRAM</div>
+        <div class="def">Video RAM. Dedicated memory used by the GPU to store framebuffers and textures.</div>
+    </div>
+    <div class="dict-entry" data-term="bms battery board controller safety">
+        <div class="term">BMS</div>
+        <div class="def">Battery Management System. PCB that monitors cell voltage and prevents overcharging.</div>
+    </div>
+    <div class="dict-entry" data-term="li-ion battery lithium power">
+        <div class="term">LI-ION</div>
+        <div class="def">Lithium-Ion. Rechargeable battery tech using lithium ions for high energy density.</div>
+    </div>
+    <div class="dict-entry" data-term="li-po battery polymer slim">
+        <div class="term">LI-PO</div>
+        <div class="def">Lithium Polymer. Flexible, pouch-based battery tech used in thin smartphones.</div>
+    </div>
+    <div class="dict-entry" data-term="pcb board circuit green trace">
+        <div class="term">PCB</div>
+        <div class="def">Printed Circuit Board. The base that physically supports and connects electronic parts.</div>
+    </div>
+    <div class="dict-entry" data-term="fpc ribbon cable flex connector">
+        <div class="term">FPC</div>
+        <div class="def">Flexible Printed Circuit. Ribbon cables that allow connectivity in tight, moving spaces.</div>
+    </div>
+    <div class="dict-entry" data-term="ic chip silicon integrated circuit">
+        <div class="term">IC</div>
+        <div class="def">Integrated Circuit. A set of electronic circuits on one small flat piece of semiconductor.</div>
+    </div>
+    <div class="dict-entry" data-term="pmu power chip voltage management">
+        <div class="term">PMU</div>
+        <div class="def">Power Management Unit. IC that controls the power flow to various parts of a device.</div>
+    </div>
+    <div class="dict-entry" data-term="capacitor farad storage filter">
+        <div class="term">CAPACITOR</div>
+        <div class="def">Electronic component that stores energy in an electric field; used for power filtering.</div>
+    </div>
+    <div class="dict-entry" data-term="resistor ohm current limit">
+        <div class="term">RESISTOR</div>
+        <div class="def">A passive component that provides electrical resistance to limit current flow.</div>
+    </div>
+    <div class="dict-entry" data-term="inductor coil magnet flux">
+        <div class="term">INDUCTOR</div>
+        <div class="def">A coil that stores energy in a magnetic field; essential for voltage conversion.</div>
+    </div>
+    <div class="dict-entry" data-term="diode one way valve polarity">
+        <div class="term">DIODE</div>
+        <div class="def">A semiconductor that allows current to flow in one direction only.</div>
+    </div>
+    <div class="dict-entry" data-term="mosfet transistor switch power">
+        <div class="term">MOSFET</div>
+        <div class="def">Metal-Oxide-Semiconductor Field-Effect Transistor. A high-speed electronic switch.</div>
+    </div>
+    <div class="dict-entry" data-term="bios uefi firmware boot">
+        <div class="term">BIOS</div>
+        <div class="def">Basic Input Output System. The firmware that initializes hardware during startup.</div>
+    </div>
+    <div class="dict-entry" data-term="nvme ssd storage fast m.2">
+        <div class="term">NVMe</div>
+        <div class="def">Non-Volatile Memory Express. A protocol for accessing high-speed flash storage.</div>
+    </div>
+    <div class="dict-entry" data-term="sata drive storage old connection">
+        <div class="term">SATA</div>
+        <div class="def">Serial AT Attachment. Standard interface for connecting HDDs and older SSDs.</div>
+    </div>
+    <div class="dict-entry" data-term="psu power supply ac dc">
+        <div class="term">PSU</div>
+        <div class="def">Power Supply Unit. Converts high-voltage AC wall power into usable low-voltage DC.</div>
+    </div>
+    <div class="dict-entry" data-term="tpu ai tensor google chip">
+        <div class="term">TPU</div>
+        <div class="def">Tensor Processing Unit. Custom AI accelerator designed for machine learning.</div>
+    </div>
+    <div class="dict-entry" data-term="pci-e expansion bus slot gpu">
+        <div class="term">PCI-e</div>
+        <div class="def">Peripheral Component Interconnect Express. High-speed serial computer expansion bus.</div>
+    </div>
+    <div class="dict-entry" data-term="heatsink cooler passive thermal">
+        <div class="term">HEATSINK</div>
+        <div class="def">A passive metal component that dissipates heat from a processor into the air.</div>
+    </div>
+    <div class="dict-entry" data-term="liquid cooling aio radiator pump">
+        <div class="term">LIQUID COOLING</div>
+        <div class="def">Using coolant liquid to transfer heat away from high-performance hardware.</div>
+    </div>
+    <div class="dict-entry" data-term="thermal paste grease conductor cpu">
+        <div class="term">THERMAL PASTE</div>
+        <div class="def">Conductive material applied between a chip and its heatsink to improve cooling.</div>
+    </div>
+    <div class="dict-entry" data-term="accelerometer move sensor phone">
+        <div class="term">ACCELEROMETER</div>
+        <div class="def">Sensor that measures non-gravitational acceleration to detect movement.</div>
+    </div>
+    <div class="dict-entry" data-term="gyroscope rotation 3d motion">
+        <div class="term">GYROSCOPE</div>
+        <div class="def">Sensor that measures angular velocity to track 3D rotation and orientation.</div>
+    </div>
+    <div class="dict-entry" data-term="barometer altitude pressure weather">
+        <div class="term">BAROMETER</div>
+        <div class="def">Measures atmospheric pressure to determine altitude and enhance GPS accuracy.</div>
+    </div>
+    <div class="dict-entry" data-term="lidar light laser scan 3d">
+        <div class="term">LiDAR</div>
+        <div class="def">Light Detection and Ranging. Uses lasers to map physical environments in 3D.</div>
+    </div>
+    <div class="dict-entry" data-term="nfc payment wireless proximity">
+        <div class="term">NFC</div>
+        <div class="def">Near Field Communication. Short-range wireless for secure payments and tags.</div>
+    </div>
+    <div class="dict-entry" data-term="bluetooth wireless radio connect">
+        <div class="term">BLUETOOTH</div>
+        <div class="def">Low-power wireless technology for connecting peripherals over short distances.</div>
+    </div>
+    <div class="dict-entry" data-term="esim digital sim card embedded">
+        <div class="term">eSIM</div>
+        <div class="def">Embedded SIM. A programmable chip that acts as a physical SIM card.</div>
+    </div>
+    <div class="dict-entry" data-term="m.2 form factor ssd slot">
+        <div class="term">M.2</div>
+        <div class="def">A small form factor for expansion cards and internal SSD storage modules.</div>
+    </div>
+    <div class="dict-entry" data-term="hall effect magnet case sensor">
+        <div class="term">HALL EFFECT</div>
+        <div class="def">Detects magnetic fields; used to automatically turn screens off with flip cases.</div>
+    </div>
+    <div class="dict-entry" data-term="haptic engine vibration motor apple">
+        <div class="term">HAPTIC ENGINE</div>
+        <div class="def">A linear actuator that creates precise vibrations to simulate physical clicks.</div>
+    </div>
+    <div class="dict-entry" data-term="oscillator crystal timing frequency">
+        <div class="term">OSCILLATOR</div>
+        <div class="def">A crystal component that vibrates to provide a clock signal for electronic timing.</div>
+    </div>
+    <div class="dict-entry" data-term="bus data transfer highway speed">
+        <div class="term">BUS</div>
+        <div class="def">The physical or logical communication system that transfers data between parts.</div>
+    </div>
+    <div class="dict-entry" data-term="tdp power heat watt processor">
+        <div class="term">TDP</div>
+        <div class="def">Thermal Design Power. The maximum amount of heat a cooling system must dissipate.</div>
+    </div>
+    <div class="dict-entry" data-term="overclock speed boost clock cpu">
+        <div class="term">OVERCLOCK</div>
+        <div class="def">Running a component at a higher clock speed than originally intended by the maker.</div>
+    </div>
+    <div class="dict-entry" data-term="underclock power save cool battery">
+        <div class="term">UNDERCLOCK</div>
+        <div class="def">Reducing clock speed to save battery life and reduce heat generation.</div>
+    </div>
+    <div class="dict-entry" data-term="latency delay ms ping lag">
+        <div class="term">LATENCY</div>
+        <div class="def">The time delay between a command and the actual execution or response.</div>
+    </div>
+    <div class="dict-entry" data-term="bandwidth data speed capacity network">
+        <div class="term">BANDWIDTH</div>
+        <div class="def">The maximum data transfer rate of a network or communication path.</div>
+    </div>
+    <div class="dict-entry" data-term="cache l1 l2 l3 fast storage memory">
+        <div class="term">CACHE</div>
+        <div class="def">Ultra-fast memory built into the CPU to store frequently accessed data.</div>
     </div>
 
-    <div id="dict-list">
-        </div>
+    <div class="dict-entry" data-term="kernel os core architecture">
+        <div class="term">KERNEL</div>
+        <div class="def">The central core of an operating system that manages hardware and software.</div>
+    </div>
+    <div class="dict-entry" data-term="frp factory reset lock google">
+        <div class="term">FRP</div>
+        <div class="def">Factory Reset Protection. Security lock requiring original account info after a reset.</div>
+    </div>
+    <div class="dict-entry" data-term="dfu mode recovery apple iphone">
+        <div class="term">DFU MODE</div>
+        <div class="def">Device Firmware Update. A deep recovery state for iPhones used for system repairs.</div>
+    </div>
+    <div class="dict-entry" data-term="bootloader startup code unlock root">
+        <div class="term">BOOTLOADER</div>
+        <div class="def">The initial code that runs to load the operating system upon startup.</div>
+    </div>
+    <div class="dict-entry" data-term="rooting admin access android os">
+        <div class="term">ROOTING</div>
+        <div class="def">Gaining administrative "superuser" privileges on the Android operating system.</div>
+    </div>
+    <div class="dict-entry" data-term="jailbreak apple ios restrictions bypass">
+        <div class="term">JAILBREAK</div>
+        <div class="def">Removing software restrictions imposed by Apple on iOS devices.</div>
+    </div>
+    <div class="dict-entry" data-term="sideloading third party app install">
+        <div class="term">SIDELOADING</div>
+        <div class="def">Installing applications from sources outside the official app store.</div>
+    </div>
+    <div class="dict-entry" data-term="apk android app package file">
+        <div class="term">APK</div>
+        <div class="def">Android Package Kit. The file format used for installing apps on Android.</div>
+    </div>
+    <div class="dict-entry" data-term="ipa apple ios app package file">
+        <div class="term">IPA</div>
+        <div class="def">The file extension for applications used on Apple iOS devices.</div>
+    </div>
+    <div class="dict-entry" data-term="firmware permanent software chip code">
+        <div class="term">FIRMWARE</div>
+        <div class="def">Low-level software programmed directly into hardware components.</div>
+    </div>
+    <div class="dict-entry" data-term="registry windows database settings">
+        <div class="term">REGISTRY</div>
+        <div class="def">A central database in Windows that stores system and application settings.</div>
+    </div>
+    <div class="dict-entry" data-term="partition drive storage division logical">
+        <div class="term">PARTITION</div>
+        <div class="def">A logical division of a physical hard drive to manage data separately.</div>
+    </div>
+    <div class="dict-entry" data-term="file system ntfs fat32 apfs format">
+        <div class="term">FILE SYSTEM</div>
+        <div class="def">The method an OS uses to organize and store files on a drive (e.g., NTFS).</div>
+    </div>
+    <div class="dict-entry" data-term="encryption data security lock crypt">
+        <div class="term">ENCRYPTION</div>
+        <div class="def">Encoding data so only authorized users with a key can read it.</div>
+    </div>
+    <div class="dict-entry" data-term="hashing security checksum fingerprint">
+        <div class="term">HASHING</div>
+        <div class="def">Converting data into a unique fixed-length string for security and verification.</div>
+    </div>
+    <div class="dict-entry" data-term="malware virus threat malicious attack">
+        <div class="term">MALWARE</div>
+        <div class="def">Software specifically designed to disrupt, damage, or gain unauthorized access.</div>
+    </div>
+    <div class="dict-entry" data-term="spyware tracking surveillance privacy">
+        <div class="term">SPYWARE</div>
+        <div class="def">Software that secretly monitors user activity and transmits data to others.</div>
+    </div>
+    <div class="dict-entry" data-term="ransomware lock data payment extortion">
+        <div class="term">RANSOMWARE</div>
+        <div class="def">Malware that encrypts files and demands a ransom payment to unlock them.</div>
+    </div>
+    <div class="dict-entry" data-term="sandbox isolated test security code">
+        <div class="term">SANDBOX</div>
+        <div class="def">An isolated environment where programs can run without affecting the main system.</div>
+    </div>
+    <div class="dict-entry" data-term="api software bridge connection data">
+        <div class="term">API</div>
+        <div class="def">Application Programming Interface. Rules that allow different apps to communicate.</div>
+    </div>
+    <div class="dict-entry" data-term="sdk dev kit tools software">
+        <div class="term">SDK</div>
+        <div class="def">Software Development Kit. A set of tools used by developers to create apps.</div>
+    </div>
+    <div class="dict-entry" data-term="ide code editor dev environment">
+        <div class="term">IDE</div>
+        <div class="def">Integrated Development Environment. A tool like VS Code used for writing code.</div>
+    </div>
+    <div class="dict-entry" data-term="compiling code convert machine logic">
+        <div class="term">COMPILING</div>
+        <div class="def">The process of turning human-written code into machine-readable instructions.</div>
+    </div>
+    <div class="dict-entry" data-term="ip address network numerical id location">
+        <div class="term">IP ADDRESS</div>
+        <div class="def">A unique numerical label assigned to every device connected to a network.</div>
+    </div>
+    <div class="dict-entry" data-term="dns domain name server web address">
+        <div class="term">DNS</div>
+        <div class="def">Domain Name System. Translates human web addresses (google.com) into IPs.</div>
+    </div>
+    <div class="dict-entry" data-term="dhcp network ip auto assign router">
+        <div class="term">DHCP</div>
+        <div class="def">Dynamic Host Configuration Protocol. Automatically assigns IP addresses on a network.</div>
+    </div>
+    <div class="dict-entry" data-term="mac address hardware physical id network">
+        <div class="term">MAC ADDRESS</div>
+        <div class="def">A unique physical identifier assigned to a network interface controller.</div>
+    </div>
+    <div class="dict-entry" data-term="vpn private tunnel network encrypted">
+        <div class="term">VPN</div>
+        <div class="def">Virtual Private Network. An encrypted tunnel for secure internet browsing.</div>
+    </div>
+    <div class="dict-entry" data-term="firewall security block network filter">
+        <div class="term">FIREWALL</div>
+        <div class="def">A security system that monitors and controls incoming/outgoing network traffic.</div>
+    </div>
+    <div class="dict-entry" data-term="ssh secure shell remote login server">
+        <div class="term">SSH</div>
+        <div class="def">Secure Shell. A protocol for secure remote access to servers and computers.</div>
+    </div>
+    <div class="dict-entry" data-term="http web data protocol transfer site">
+        <div class="term">HTTP</div>
+        <div class="def">Hypertext Transfer Protocol. The foundation of data exchange on the World Wide Web.</div>
+    </div>
+    <div class="dict-entry" data-term="https secure web ssl tls padlock">
+        <div class="term">HTTPS</div>
+        <div class="def">Secure version of HTTP. Uses encryption to protect data transferred over the web.</div>
+    </div>
+    <div class="dict-entry" data-term="ssl tls secure socket layer encrypt">
+        <div class="term">SSL / TLS</div>
+        <div class="def">Encryption protocols used to secure communication over a computer network.</div>
+    </div>
+    <div class="dict-entry" data-term="proxy intermediate server network hide ip">
+        <div class="term">PROXY</div>
+        <div class="def">A server that acts as a gateway between a user and the internet.</div>
+    </div>
+    <div class="dict-entry" data-term="cookies web track session data browser">
+        <div class="term">COOKIES</div>
+        <div class="def">Small files sites save in your browser to remember your login or preferences.</div>
+    </div>
+    <div class="dict-entry" data-term="cache temporary browser speed storage">
+        <div class="term">CACHE (WEB)</div>
+        <div class="def">Temporary storage of web assets (images, scripts) to speed up website loading.</div>
+    </div>
+    <div class="dict-entry" data-term="os operating system windows mac linux">
+        <div class="term">OS</div>
+        <div class="def">Operating System. Software that manages all other application programs in a computer.</div>
+    </div>
+    <div class="dict-entry" data-term="virtual machine vm emu guest host">
+        <div class="term">VIRTUAL MACHINE</div>
+        <div class="def">An emulation of a computer system that runs like a physical computer.</div>
+    </div>
+    <div class="dict-entry" data-term="container docker kubernetes cloud app">
+        <div class="term">CONTAINER</div>
+        <div class="def">Standardized unit of software that packages code and its dependencies.</div>
+    </div>
+    <div class="dict-entry" data-term="cloud server remote storage data web">
+        <div class="term">THE CLOUD</div>
+        <div class="def">A network of remote servers used for storing, managing, and processing data.</div>
+    </div>
+    <div class="dict-entry" data-term="open source public code free modify">
+        <div class="term">OPEN SOURCE</div>
+        <div class="def">Software with source code that anyone can inspect, modify, and enhance.</div>
+    </div>
+    <div class="dict-entry" data-term="closed source proprietary private code">
+        <div class="term">CLOSED SOURCE</div>
+        <div class="def">Proprietary software where the source code is kept secret by the owner.</div>
+    </div>
+    <div class="dict-entry" data-term="binary machine code 01 data computing">
+        <div class="term">BINARY</div>
+        <div class="def">A base-2 numbering system (0 and 1) used by computers to process data.</div>
+    </div>
+    <div class="dict-entry" data-term="hexadecimal hex color code base 16">
+        <div class="term">HEXADECIMAL</div>
+        <div class="def">A base-16 numbering system commonly used in coding and web design (e.g., #00d2ff).</div>
+    </div>
+    <div class="dict-entry" data-term="latency delay ms ping round trip">
+        <div class="term">PING</div>
+        <div class="def">A utility used to test the reachability of a host on an IP network.</div>
+    </div>
+    <div class="dict-entry" data-term="packet network data chunk header">
+        <div class="term">PACKET</div>
+        <div class="def">A small segment of a larger message sent across a network.</div>
+    </div>
+    <div class="dict-entry" data-term="bandwidth capacity network pipe flow">
+        <div class="term">BANDWIDTH</div>
+        <div class="def">The bit-rate of available or consumed information capacity of a network.</div>
+    </div>
+    <div class="dict-entry" data-term="gui interface visual icons mouse">
+        <div class="term">GUI</div>
+        <div class="def">Graphical User Interface. Visual way of interacting with a computer using icons.</div>
+    </div>
+    <div class="dict-entry" data-term="cli terminal console command text">
+        <div class="term">CLI</div>
+        <div class="def">Command Line Interface. Interacting with an OS by typing text commands.</div>
+    </div>
+    <div class="dict-entry" data-term="debug fix bug code error repair">
+        <div class="term">DEBUGGING</div>
+        <div class="def">The process of finding and resolving bugs or defects in software code.</div>
+    </div>
 
-    <div class="counter" id="term-count">TERMS_LOADED: 300</div>
+    <div class="dict-entry" data-term="multimeter test voltage board check">
+        <div class="term">MULTIMETER</div>
+        <div class="def">The primary tool for measuring voltage, current, and resistance on a PCB.</div>
+    </div>
+    <div class="dict-entry" data-term="oscilloscope wave signal data track">
+        <div class="term">OSCILLOSCOPE</div>
+        <div class="def">Tool that visualizes electrical signals as waveforms to find communication errors.</div>
+    </div>
+    <div class="dict-entry" data-term="soldering melt tin join component heat">
+        <div class="term">SOLDERING</div>
+        <div class="def">Joining two metal components by melting a filler metal (solder) into the joint.</div>
+    </div>
+    <div class="dict-entry" data-term="flux solder flow clean oxidation paste">
+        <div class="term">FLUX</div>
+        <div class="def">Chemical cleaning agent used before soldering to prevent oxidation and improve flow.</div>
+    </div>
+    <div class="dict-entry" data-term="microsoldering tiny chip microscope repair">
+        <div class="term">MICROSOLDERING</div>
+        <div class="def">Extreme precision soldering of components too small to see with the naked eye.</div>
+    </div>
+    <div class="dict-entry" data-term="thermal camera heat short find board">
+        <div class="term">THERMAL CAMERA</div>
+        <div class="def">Visualizes heat to instantly find short-circuited chips on a logic board.</div>
+    </div>
+    <div class="dict-entry" data-term="rosin flux smoke board short test">
+        <div class="term">ROSIN</div>
+        <div class="def">Solid flux used in electronics; can be turned into smoke to find heat-generating shorts.</div>
+    </div>
+    <div class="dict-entry" data-term="short circuit ground power logic fail">
+        <div class="term">SHORT CIRCUIT</div>
+        <div class="def">An unintended path of electricity between two points, usually causing total failure.</div>
+    </div>
+    <div class="dict-entry" data-term="open circuit break trace disconnect wire">
+        <div class="term">OPEN CIRCUIT</div>
+        <div class="def">A break in the electrical path (torn trace or cable) that prevents power flow.</div>
+    </div>
+    <div class="dict-entry" data-term="esd static shock fry board ground">
+        <div class="term">ESD</div>
+        <div class="def">Electrostatic Discharge. A sudden flow of static electricity that can destroy sensitive ICs.</div>
+    </div>
+    <div class="dict-entry" data-term="ultrasonic cleaner water corrosion wash">
+        <div class="term">ULTRASONIC CLEANER</div>
+        <div class="def">Uses high-frequency sound waves and chemicals to remove corrosion from logic boards.</div>
+    </div>
+    <div class="dict-entry" data-term="ipa alcohol clean board flux dirt">
+        <div class="term">IPA (ALCOHOL)</div>
+        <div class="def">Isopropyl Alcohol (99.9%). The standard safe cleaning fluid for electronics and PCBs.</div>
+    </div>
+    <div class="dict-entry" data-term="reflow heat chip solder fix ball">
+        <div class="term">REFLOW</div>
+        <div class="def">Using heat to melt and reset solder joints without removing the component.</div>
+    </div>
+    <div class="dict-entry" data-term="reball stencil solder ball chip grid">
+        <div class="term">REBALLING</div>
+        <div class="def">Removing an IC, cleaning it, and applying new solder balls before re-attaching it.</div>
+    </div>
+    <div class="dict-entry" data-term="bga ball grid array chip mount solder">
+        <div class="term">BGA</div>
+        <div class="def">Ball Grid Array. A surface-mount packaging used for ICs with many pins (like CPUs).</div>
+    </div>
+    <div class="dict-entry" data-term="smd surface mount device component pcb">
+        <div class="term">SMD</div>
+        <div class="def">Surface-Mount Device. Electronic components soldered directly onto the surface of a PCB.</div>
+    </div>
+    <div class="dict-entry" data-term="pth plated through hole component pin">
+        <div class="term">PTH</div>
+        <div class="def">Plated Through-Hole. Components with pins that go through the board and are soldered.</div>
+    </div>
+    <div class="dict-entry" data-term="jumper wire trace fix bridge copper">
+        <div class="term">JUMPER WIRE</div>
+        <div class="def">A small insulated wire used to bridge a broken trace on a logic board.</div>
+    </div>
+    <div class="dict-entry" data-term="thermal runaway battery fire explosion">
+        <div class="term">THERMAL RUNAWAY</div>
+        <div class="def">A state where a battery cell gets hot enough to release energy, leading to fire.</div>
+    </div>
+    <div class="dict-entry" data-term="bench power supply voltage injection test">
+        <div class="term">BENCH POWER SUPPLY</div>
+        <div class="def">Provides controlled DC voltage to a board to test for power draw and shorts.</div>
+    </div>
+    <div class="dict-entry" data-term="current draw amps battery power test">
+        <div class="term">CURRENT DRAW</div>
+        <div class="def">The amount of electricity a device consumes, measured in Amps (A) or Milliamps (mA).</div>
+    </div>
+    <div class="dict-entry" data-term="voltage drop test red black ground probe">
+        <div class="term">VOLTAGE DROP</div>
+        <div class="def">Testing line integrity by comparing voltage before and after a circuit segment.</div>
+    </div>
+    <div class="dict-entry" data-term="cold solder joint gray crack fail">
+        <div class="term">COLD SOLDER JOINT</div>
+        <div class="def">A faulty connection where the solder didn't melt fully, often causing intermittent bugs.</div>
+    </div>
+    <div class="dict-entry" data-term="flux cleaner board wash chemicals safe">
+        <div class="term">FLUX CLEANER</div>
+        <div class="def">Specialized chemical spray for removing sticky flux residue after soldering.</div>
+    </div>
+    <div class="dict-entry" data-term="desoldering wick copper braid remove tin">
+        <div class="term">DESOLDERING WICK</div>
+        <div class="def">Copper braid used to soak up and remove old solder from a logic board.</div>
+    </div>
+    <div class="dict-entry" data-term="heat gun hot air station rework chip">
+        <div class="term">HEAT GUN / HOT AIR</div>
+        <div class="def">A tool that blows controlled hot air to remove or reflow micro-components.</div>
+    </div>
+    <div class="dict-entry" data-term="preheater board warm safe desolder">
+        <div class="term">PREHEATER</div>
+        <div class="def">A plate that warms the entire PCB to prevent thermal shock during hot air work.</div>
+    </div>
+    <div class="dict-entry" data-term="schematic board view pdf circuit map">
+        <div class="term">SCHEMATIC</div>
+        <div class="def">A technical diagram showing every electrical connection and component on a board.</div>
+    </div>
+    <div class="dict-entry" data-term="boardview file zxw xinzhizao pad find">
+        <div class="term">BOARDVIEW</div>
+        <div class="def">Software that shows the physical layout and interactive traces of a logic board.</div>
+    </div>
+    <div class="dict-entry" data-term="corrosion liquid damage green rust board">
+        <div class="term">CORROSION</div>
+        <div class="def">Chemical decay of metal traces caused by liquid exposure and electrical current.</div>
+    </div>
 
-    <script>
-        const JDT_DATABASE = [
-            {w: "A-SERIES", d: "High-performance custom SoCs by Apple for mobile hardware."},
-            {w: "ABSTRACTION", d: "Software concept of hiding complexity and showing only essentials."},
-            {w: "ACCELEROMETER", d: "Sensor that detects motion and device orientation."},
-            {w: "ACTIVE DEVICE", d: "Component like a transistor that requires power to operate."},
-            {w: "ADHESIVE", d: "Bonding material used to secure screens and batteries."},
-            {w: "AGILE", d: "Software development method focused on iterative progress."},
-            {w: "ALGORITHM", d: "A step-by-step procedure for solving a technical problem."},
-            {w: "ALIGNMENT JIG", d: "Tool used to precisely position parts during reassembly."},
-            {w: "ALU", d: "Arithmetic Logic Unit. The math engine inside the CPU."},
-            {w: "AMOLED", d: "Active-Matrix Organic Light-Emitting Diode display technology."},
-            {w: "AMPERAGE", d: "The strength of electrical flow in a circuit (Amps)."},
-            {w: "ANODE", d: "The positive electrode where current enters a component."},
-            {w: "ANTENNA", d: "Transmits and receives RF signals for Wi-Fi and Cellular."},
-            {w: "API", d: "Application Programming Interface. Protocol for app communication."},
-            {w: "APN", d: "Access Point Name. Settings used to connect to mobile internet."},
-            {w: "APP CRASH", d: "Software failure where a program stops responding suddenly."},
-            {w: "ASIC", d: "Application-Specific Integrated Circuit. Custom-built chips."},
-            {w: "AUTHENTICATION", d: "Verification of identity (PIN, Biometrics, Password)."},
-            {w: "B-CHASSIS", d: "The internal frame structure of a mobile device."},
-            {w: "BACK GLASS", d: "The rear protective panel of high-end smartphones."},
-            {w: "BACKLIGHT", d: "The light source behind an LCD panel."},
-            {w: "BACKUP", d: "A redundant copy of data for disaster recovery."},
-            {w: "BANDWIDTH", d: "Maximum rate of data transfer across a network."},
-            {w: "BASEBAND", d: "Processor handling radio signals and cellular network sync."},
-            {w: "BATTERY HEALTH", d: "Percentage of original capacity remaining in a cell."},
-            {w: "BAUD", d: "Unit of signaling speed in telecommunications."},
-            {w: "BGA", d: "Ball Grid Array. Surface-mount packaging for chips."},
-            {w: "BIG O", d: "Notation used to describe the efficiency of an algorithm."},
-            {w: "BINARY", d: "Base-2 numbering system (0s and 1s) used by computers."},
-            {w: "BIOS", d: "Basic Input/Output System. Firmware for PC startup."},
-            {w: "BIT", d: "The smallest unit of digital data (0 or 1)."},
-            {w: "BLUETOOTH", d: "Short-range wireless protocol for data exchange."},
-            {w: "BOOT LOOP", d: "Software failure where a device restarts indefinitely."},
-            {w: "BOOTLOADER", d: "Code that loads the OS into memory upon startup."},
-            {w: "BRICK", d: "A device made non-functional by software/firmware failure."},
-            {w: "BROWSER", d: "Software used to access and display web content."},
-            {w: "BSI", d: "Battery Status Indicator. Line that tells OS battery level."},
-            {w: "BUG", d: "An error or flaw in software code or hardware logic."},
-            {w: "BUS", d: "Communication pathway between computer components."},
-            {w: "BYTE", d: "Unit of data consisting of 8 bits."},
-            {w: "CACHE", d: "High-speed temporary storage for frequent data access."},
-            {w: "CALIBRATION", d: "Adjusting hardware sensors to original factory specs."},
-            {w: "CAPACITOR", d: "Component that stores electrical energy temporarily."},
-            {w: "CARRIER", d: "Wireless service provider (e.g., Verizon, T-Mobile)."},
-            {w: "CATHODE", d: "The negative electrode in a battery or circuit."},
-            {w: "CDMA", d: "Code-Division Multiple Access. 2G/3G cellular standard."},
-            {w: "CELL", d: "A geographic area served by a specific tower antenna."},
-            {w: "CHIPSET", d: "Group of integrated circuits that work together (e.g. SoC)."},
-            {w: "CIRCUIT", d: "A closed path that allows electrical current to flow."},
-            {w: "CLAMP", d: "Tool used to apply pressure while screen adhesive cures."},
-            {w: "CLASS", d: "In OOP, a blueprint for creating objects."},
-            {w: "CLIENT", d: "Hardware or software that requests data from a server."},
-            {w: "CLOUD", d: "Off-site servers used for storage and processing."},
-            {w: "CMOS", d: "Battery-powered chip that stores BIOS settings."},
-            {w: "CODE", d: "Instructions written in a programming language."},
-            {w: "COMPILER", d: "Software that converts code into machine language."},
-            {w: "COMPLEXITY", d: "Measure of resources an algorithm uses (time/space)."},
-            {w: "COMPONENT", d: "Individual hardware part (resistor, IC, screen)."},
-            {w: "CONTINUITY", d: "Uninterrupted path for current in an electrical circuit."},
-            {w: "CONTROL UNIT", d: "Part of the CPU that directs system operations."},
-            {w: "CPU", d: "Central Processing Unit. The primary brain of the device."},
-            {w: "CRACKED SCREEN", d: "Physical damage to the glass or digitizer layer."},
-            {w: "CYBERSECURITY", d: "Practice of protecting systems from digital attacks."},
-            {w: "D-PULSE", d: "Diagnostic signal used to verify IC responsiveness."},
-            {w: "DAUGHTERBOARD", d: "Secondary PCB connected to the main logic board."},
-            {w: "DATA BUS", d: "Path used to move data between CPU and memory."},
-            {w: "DATA RECOVERY", d: "Retrieving files from damaged or dead hardware."},
-            {w: "DATABASE", d: "Structured collection of stored digital information."},
-            {w: "DC POWER", d: "Direct Current. The type of power used by mobile chips."},
-            {w: "DEAD PHONE", d: "A device that shows no response to power or charging."},
-            {w: "DEBUGGING", d: "The process of finding and fixing errors in code."},
-            {w: "DECOMPOSITION", d: "Breaking a complex problem into smaller parts."},
-            {w: "DECRYPT", d: "Converting encrypted data back into readable form."},
-            {w: "DEPENDENCY", d: "A software component that another one relies on."},
-            {w: "DEVOPS", d: "Combines development and IT operations for speed."},
-            {w: "DIAGNOSTIC", d: "Tools or tests used to identify hardware faults."},
-            {w: "DIGITIZER", d: "Layer of glass that converts touch into digital input."},
-            {w: "DIODE", d: "Semiconductor that allows current to flow one way."},
-            {w: "DISPLAY", d: "The visual output component (LCD, OLED, etc.)."},
-            {w: "DNS", d: "Domain Name System. Translates URLs to IP addresses."},
-            {w: "DRIVER", d: "Software that allows OS to talk to hardware parts."},
-            {w: "DRY SOLDER", d: "Faulty solder joint that has cracked or disconnected."},
-            {w: "DUAL SIM", d: "Hardware supporting two cellular network identities."},
-            {w: "DUMP", d: "A copy of memory or storage taken for analysis."},
-            {w: "DYNAMIC TYPING", d: "Type checking performed at runtime in software."},
-            {w: "EAR SPEAKER", d: "Component used for audio during voice calls."},
-            {w: "EEPROM", d: "Electrically Erasable Programmable Read-Only Memory."},
-            {w: "EFUSE", d: "Permanent internal security switch in processors."},
-            {w: "ELECTROLYTE", d: "Conductive medium inside a lithium-ion battery."},
-            {w: "EMBEDDED", d: "Hardware/software dedicated to one specific task."},
-            {w: "EMMC", d: "Embedded Multi-Media Controller. Internal storage tech."},
-            {w: "ENCRYPT", d: "Converting data into code to prevent unauthorized access."},
-            {w: "ENDPOINT", d: "Any device connected to a network (phone, PC)."},
-            {w: "ENVIRONMENT", d: "The ecosystem where software is built or runs."},
-            {w: "EPROM", d: "Erasable Programmable Read-Only Memory."},
-            {w: "ESD", d: "Electrostatic Discharge. Can kill chips instantly."},
-            {w: "ETHERNET", d: "Standard for wired local area networking."},
-            {w: "EXCHANGE", d: "Centralized hub for telecommunications routing."},
-            {w: "FACTORY RESET", d: "Wiping all user data to original software state."},
-            {w: "FCC", d: "Federal Communications Commission. Regulates RF devices."},
-            {w: "FIBER OPTIC", d: "Data transmission using light pulses through glass."},
-            {w: "FILE SYSTEM", d: "How data is organized and stored on a drive."},
-            {w: "FILTER", d: "Circuit that removes unwanted electrical noise."},
-            {w: "FIRMWARE", d: "Low-level software embedded into hardware."},
-            {w: "FLASH", d: "Type of non-volatile memory that can be erased."},
-            {w: "FLASHING", d: "Installing or updating a device's firmware/OS."},
-            {w: "FLEX CABLE", d: "Thin, flexible ribbon connecting internal parts."},
-            {w: "FLUX", d: "Chemical used to clean and assist solder flow."},
-            {w: "FPC", d: "Flexible Printed Circuit. Type of ribbon connector."},
-            {w: "FRAME", d: "The structure holding all internal components."},
-            {w: "FREQUENCY", d: "Rate of signal oscillation measured in Hertz."},
-            {w: "FRP LOCK", d: "Factory Reset Protection. Security for stolen devices."},
-            {w: "FRONT CAMERA", d: "Sensor used for selfies and FaceID/Video calls."},
-            {w: "FUSE", d: "Safety component that breaks if current is too high."},
-            {w: "G-SENSOR", d: "Gravity sensor for measuring acceleration/tilt."},
-            {w: "GATEWAY", d: "Node that connects two different networks."},
-            {w: "GB", d: "Gigabyte. 1,000,000,000 bytes of data."},
-            {w: "GENERAL PURPOSE", d: "CPU designed for many tasks, unlike an ASIC."},
-            {w: "GHOST TOUCH", d: "Screen registering input without being touched."},
-            {w: "GHZ", d: "Gigahertz. 1,000,000,000 cycles per second."},
-            {w: "GLOVES", d: "Anti-static gear to prevent ESD and skin oil damage."},
-            {w: "GORILLA GLASS", d: "Chemically strengthened glass for phone displays."},
-            {w: "GPU", d: "Graphics Processing Unit. Handles visual rendering."},
-            {w: "GROUND", d: "Common return path for current in an electrical circuit."},
-            {w: "GSM", d: "Global System for Mobile communication. 2G standard."},
-            {w: "GUI", d: "Graphical User Interface. Visual OS menus."},
-            {w: "HANG", d: "Device state where software stops responding to input."},
-            {w: "HAPTICS", d: "Tactile feedback using precise vibration motors."},
-            {w: "HARD RESET", d: "Force-restarting a device using physical buttons."},
-            {w: "HARDWARE", d: "The physical, tangible parts of a computer system."},
-            {w: "HDMI", d: "High-Definition Multimedia Interface for video/audio."},
-            {w: "HEAT GUN", d: "Hot air tool for desoldering and loosening adhesive."},
-            {w: "HEAT MAT", d: "Flat surface for warming devices to soften glue."},
-            {w: "HERTZ", d: "Unit of frequency (1 cycle per second)."},
-            {w: "HIERARCHY", d: "Organizational structure for data or system logic."},
-            {w: "HIGH PASS", d: "Filter that allows high frequencies through."},
-            {w: "HOME BUTTON", d: "The main navigation key (physical or soft-touch)."},
-            {w: "HOTSPOT", d: "Using a mobile device to share Wi-Fi with others."},
-            {w: "HTML", d: "HyperText Markup Language. The structure of the web."},
-            {w: "HTTP", d: "HyperText Transfer Protocol for web data exchange."},
-            {w: "HYBRID APP", d: "App that works across both iOS and Android."},
-            {w: "IC", d: "Integrated Circuit. Microchip with complex circuitry."},
-            {w: "IDE", d: "Integrated Development Environment for coding."},
-            {w: "IEEE", d: "Global standards organization for electronics/tech."},
-            {w: "IMEI", d: "Unique 15-digit ID for every cellular device."},
-            {w: "IMPRESSION", d: "Metric for how often content is fetched digitally."},
-            {w: "INDUCTOR", d: "Component that stores energy in a magnetic field."},
-            {w: "INFERENCE", d: "AI conclusion based on data and learned patterns."},
-            {w: "INPUT", d: "Data or signals sent into a computer system."},
-            {w: "INSTAGRAM", d: "Social platform based on image and video sharing."},
-            {w: "INTEGRITY", d: "Accuracy and consistency of data over its lifecycle."},
-            {w: "INTERFACE", d: "Point of interaction between hardware or software."},
-            {w: "INTERNAL STORAGE", d: "The NAND/UFS chip where files are kept."},
-            {w: "INTERNET", d: "The global network of interconnected computers."},
-            {w: "IOS", d: "Mobile operating system created by Apple Inc."},
-            {w: "IP RATING", d: "Ingress Protection. Water/Dust resistance scale."},
-            {w: "IPHONE", d: "Line of smartphones developed by Apple."},
-            {w: "IROUND", d: "Software verification for circuit path grounding."},
-            {w: "ISA", d: "Instruction Set Architecture. CPU instruction rules."},
-            {w: "IT SUPPORT", d: "Services for troubleshooting tech infrastructure."},
-            {w: "ITERATION", d: "A single cycle of a software development process."},
-            {w: "JACK", d: "Physical female connector (e.g., Headphone jack)."},
-            {w: "JAILBREAK", d: "Removing software restrictions on iOS devices."},
-            {w: "JAVA", d: "Popular cross-platform programming language."},
-            {w: "JUMPER", d: "Wire used to bypass a broken circuit connection."},
-            {w: "KERNEL", d: "The core software bridge between CPU and Apps."},
-            {w: "KEYBOARD", d: "Input device for text and commands."},
-            {w: "KEYWORDS", d: "Terms used for indexing and searching data."},
-            {w: "KILOBYTE", d: "1,024 bytes of digital information."},
-            {w: "LATENCY", d: "Delay between a command and the system response."},
-            {w: "LCD", d: "Liquid Crystal Display. Screen tech using backlight."},
-            {w: "LEAD-FREE", d: "Solder required by modern environmental standards."},
-            {w: "LED", d: "Light Emitting Diode. Efficient light source."},
-            {w: "LIDAR", d: "Light Detection and Ranging for 3D depth sensing."},
-            {w: "LIGTHNING", d: "Apple's proprietary connector for charging/data."},
-            {w: "LINUX", d: "Open-source kernel used for Android and servers."},
-            {w: "LI-ION", d: "Lithium-Ion. Rechargeable battery chemistry."},
-            {w: "LOADER", d: "Part of OS that starts a program into memory."},
-            {w: "LOCAL STORAGE", d: "Data saved on the physical device drive."},
-            {w: "LOGIC BOARD", d: "The main motherboard in a mobile device."},
-            {w: "LOGIC GATE", d: "Basic building block of digital logic (AND, OR)."},
-            {w: "LOOP", d: "Code that repeats until a condition is met."},
-            {w: "LOUDSPEAKER", d: "Component for external audio/music/speakerphone."},
-            {w: "LTE", d: "Long-Term Evolution. 4G cellular high-speed data."},
-            {w: "MACHINE CODE", d: "Lowest level instructions executed by a CPU."},
-            {w: "MACROS", d: "Automated scripts for repetitive software tasks."},
-            {w: "MAINBOARD", d: "The primary PCB of a computer system."},
-            {w: "MALWARE", d: "Malicious software designed to damage systems."},
-            {w: "MB", d: "Megabyte. Roughly 1,000,000 bytes."},
-            {w: "MEMORY", d: "Storage used for immediate processing (RAM)."},
-            {w: "MESH", d: "Type of network where every node connects to others."},
-            {w: "METADATA", d: "Information that describes other data."},
-            {w: "MICROCONTROLLER", d: "Small computer on a single IC for simple tasks."},
-            {w: "MICROPHONE", d: "Sensor that converts sound into electrical signals."},
-            {w: "MICROSOLDERING", d: "Precision soldering on tiny motherboard parts."},
-            {w: "MICROUSB", d: "Legacy standard for mobile charging/data cables."},
-            {w: "MODEM", d: "Hardware used for network data transmission."},
-            {w: "MODULAR", d: "Design where parts can be easily swapped out."},
-            {w: "MOTHERBOARD", d: "Main PCB holding CPU, RAM, and IC chips."},
-            {w: "MP3", d: "Digital audio compression standard."},
-            {w: "MSP", d: "Managed Service Provider for IT infrastructure."},
-            {w: "MULTIMETER", d: "Tool used to measure Volts, Amps, and Ohms."},
-            {w: "MVC", d: "Model-View-Controller. Software design pattern."},
-            {w: "NAND", d: "Type of non-volatile flash storage memory."},
-            {w: "NATIVE APP", d: "Software built specifically for one OS platform."},
-            {w: "NETWORK", d: "Group of interconnected computers or devices."},
-            {w: "NFC", d: "Near Field Communication for contactless payments."},
-            {w: "NIC", d: "Network Interface Card. Hardware for network access."},
-            {w: "NO SERVICE", d: "State where phone cannot reach a cellular tower."},
-            {w: "NODE", d: "An individual point or device in a network."},
-            {w: "O-RING", d: "Seal used for water resistance in device ports."},
-            {w: "OBJECT", d: "An instance of a Class in OOP programming."},
-            {w: "OEM", d: "Original Equipment Manufacturer. Factory-spec parts."},
-            {w: "OFFSET", d: "Distance or value added to align data correctly."},
-            {w: "OHM", d: "Unit of electrical resistance in a circuit."},
-            {w: "OIS", d: "Optical Image Stabilization for steady cameras."},
-            {w: "OLED", d: "Organic LED. High-contrast screen with deep blacks."},
-            {w: "OOP", d: "Object-Oriented Programming (Java, C++, etc.)."},
-            {w: "OPEN SOURCE", d: "Software with publicly available source code."},
-            {w: "OPERATING SYSTEM", d: "Primary software controlling hardware (OS)."},
-            {w: "OPTICAL ZOOM", d: "Using lenses to magnify images without loss."},
-            {w: "OSCILLOSCOPE", d: "Tool for visualizing signal voltages over time."},
-            {w: "OTA", d: "Over-The-Air. Wireless software update method."},
-            {w: "OUTPUT", d: "Information generated by a computer for the user."},
-            {w: "OVERCLOCK", d: "Running hardware faster than original factory spec."},
-            {w: "OVERHEATING", d: "Excessive heat causing system throttling or damage."},
-            {w: "PACKET", d: "Small segment of data sent over a network."},
-            {w: "PARTITION", d: "A logical division of a storage drive."},
-            {w: "PASSIVE DEVICE", d: "Component that doesn't need power (Resistor)."},
-            {w: "PASSWORD", d: "Secret phrase used to grant access to a system."},
-            {w: "PCB", d: "Printed Circuit Board. Board for mounting parts."},
-            {w: "PETER", d: "Internal code for high-voltage motherboard testing."},
-            {w: "PHISHING", d: "Scam attempting to steal credentials via fake mail."},
-            {w: "PHILLIPS", d: "Common cross-head screwdriver type for tech."},
-            {w: "PIXEL", d: "The smallest unit of an image on a display."},
-            {w: "PLUG", d: "Male connector that inserts into a jack."},
-            {w: "POINTER", d: "Symbol on screen indicating mouse movement."},
-            {w: "PORT", d: "Interface for connecting external cables/devices."},
-            {w: "POWER BUTTON", d: "Physical switch to turn hardware on or off."},
-            {w: "POWER IC", d: "Chip that manages energy distribution on a board."},
-            {w: "PROGRAM", d: "A set of instructions to achieve a specific task."},
-            {w: "PROXIMITY", d: "Sensor that turns off screen during voice calls."},
-            {w: "PSU", d: "Power Supply Unit. Provides electricity to hardware."},
-            {w: "PWM", d: "Pulse Width Modulation for controlling brightness."},
-            {w: "PYLON", d: "Logic architecture used for high-speed bus lanes."},
-            {w: "Q-SYNC", d: "Display technology for matching refresh rates."},
-            {w: "QA", d: "Quality Assurance. Testing for bugs and defects."},
-            {w: "QUANTUM", d: "Experimental computing using subatomic particles."},
-            {w: "QUEUE", d: "Data structure where first-in is first-out (FIFO)."},
-            {w: "QUICK CHARGE", d: "High-voltage fast charging protocol."},
-            {w: "RADIATION", d: "EM energy emitted by wireless antennas."},
-            {w: "RAM", d: "Random Access Memory. Fast, temporary storage."},
-            {w: "RASTER", d: "Image format made of a grid of colored pixels."},
-            {w: "REBALL", d: "Replacing solder balls on a BGA integrated circuit."},
-            {w: "RECOVERY", d: "Special OS mode for flashing or factory resets."},
-            {w: "REFLOW", d: "Heating a board to repair broken solder joints."},
-            {w: "REFURBISHED", d: "Pre-owned device restored to like-new state."},
-            {w: "REGISTRY", d: "Database of system settings on Windows OS."},
-            {w: "RELATIONAL", d: "Database type using tables and keys."},
-            {w: "RESISTOR", d: "Component that limits electrical current flow."},
-            {w: "RESOLUTION", d: "The number of pixels displayed on a screen."},
-            {w: "RESTART", d: "Power cycling a device to refresh the system."},
-            {w: "RF", d: "Radio Frequency. Waves used for wireless data."},
-            {w: "RGB", d: "Color model using Red, Green, and Blue light."},
-            {w: "RMM", d: "Remote Monitoring and Management for IT."},
-            {w: "ROM", d: "Read-Only Memory. Permanent storage for firmware."},
-            {w: "ROOT", d: "Full administrative access on Android/Linux."},
-            {w: "ROUTER", d: "Device that directs traffic between networks."},
-            {w: "SAAS", d: "Software as a Service. Subscription-based web apps."},
-            {w: "SATA", d: "Legacy standard for connecting hard drives."},
-            {w: "SCRUM", d: "Agile framework for managing complex work."},
-            {w: "SDK", d: "Software Development Kit for building apps."},
-            {w: "SDLC", d: "Software Development Life Cycle phases."},
-            {w: "SECURE ENCLAVE", d: "Isolated chip for biometrics and encryption."},
-            {w: "SENSOR", d: "Hardware that detects physical inputs/changes."},
-            {w: "SERIAL", d: "Method of data transfer one bit at a time."},
-            {w: "SERVER", d: "Computer that provides services to clients."},
-            {w: "SHORT CIRCUIT", d: "Current flowing through an unintended path."},
-            {w: "SILICON", d: "Semiconductor material used to make microchips."},
-            {w: "SIM", d: "Subscriber Identity Module. Card for network ID."},
-            {w: "SITEMAP", d: "List of all pages on a website or web app."},
-            {w: "SMARTPHONE", d: "Mobile phone with an OS and advanced computing."},
-            {w: "SOC", d: "System on a Chip. All-in-one processor package."},
-            {w: "SOFTWARE", d: "Intangible instructions that tell hardware what to do."},
-            {w: "SOLDER", d: "Metal alloy melted to join electrical parts."},
-            {w: "SPEAKER", d: "Transducer that converts signals into audible sound."},
-            {w: "SSD", d: "Solid State Drive. Fast, durable data storage."},
-            {w: "STATIC", d: "Type checking performed at compile time in code."},
-            {w: "STRING", d: "Data type used for sequences of text characters."},
-            {w: "SUPERVISED", d: "AI training using labeled example data."},
-            {w: "SWIPING", d: "Common touch gesture for navigating mobile OS."},
-            {w: "SYNK", d: "Method of aligning data across multiple devices."},
-            {w: "SYSTEM BOARD", d: "Another name for the logic or motherboard."},
-            {w: "T-BONE", d: "JDT diagnostic tool for battery connector testing."},
-            {w: "TDD", d: "Test-Driven Development in software engineering."},
-            {w: "TELEMETRY", d: "Automated data collection from remote devices."},
-            {w: "TERABYTE", d: "1,024 Gigabytes of digital information."},
-            {w: "TERMINAL", d: "Text-based interface for system commands."},
-            {w: "TETHERING", d: "Sharing a phone's data connection via cable."},
-            {w: "THERMAL IMAGING", d: "Visualizing heat to find motherboard shorts."},
-            {w: "THERMAL PASTE", d: "Compound for improving heat sink conductivity."},
-            {w: "THROTTLING", d: "Slowing hardware speed to prevent overheating."},
-            {w: "THROUGH-HOLE", d: "Component mounting through holes in a PCB."},
-            {w: "TOUCHSCREEN", d: "Input display that senses finger contact."},
-            {w: "TP", d: "Touch Panel. The digitized layer of a screen."},
-            {w: "TRACING", d: "Following signal paths on a motherboard PCB."},
-            {w: "TRANSISTOR", d: "Semiconductor switch; the basis of all logic."},
-            {w: "TRI-WING", d: "Proprietary screwdriver used by Apple/Nintendo."},
-            {w: "TUPLE", d: "Ordered, immutable sequence of data in code."},
-            {w: "TWEEZERS", d: "Anti-static tool for handling tiny components."},
-            {w: "U-DISK", d: "External USB storage or bootable drive."},
-            {w: "UART", d: "Universal Asynchronous Receiver/Transmitter."},
-            {w: "UFS", d: "Universal Flash Storage. Modern fast phone storage."},
-            {w: "UI", d: "User Interface. What the person sees/touches."},
-            {w: "ULTRASONIC", d: "Cleaning method using high-frequency waves."},
-            {w: "UNDERCLOCK", d: "Reducing chip speed to save battery life."},
-            {w: "UNISON", d: "Aligning multiple hardware nodes to one clock."},
-            {w: "UNIVERSAL BUS", d: "USB standard for power and data cables."},
-            {w: "UNLOCK", d: "Removing carrier or security restrictions."},
-            {w: "UPTIME", d: "The time a system remains operational/online."},
-            {w: "USB", d: "Universal Serial Bus. Connection standard."},
-            {w: "UX", d: "User Experience. How a person feels using tech."},
-            {w: "V-REF", d: "Voltage Reference point for motherboard testing."},
-            {w: "VAPOR CHAMBER", d: "Advanced liquid-based cooling hardware."},
-            {w: "VARIABLE", d: "A named storage location for data in code."},
-            {w: "VBAT", d: "Main battery voltage line on a motherboard."},
-            {w: "VBUS", d: "Voltage line coming from the charging port."},
-            {w: "VECTOR", d: "Image format based on mathematical paths."},
-            {w: "VIBRATOR", d: "Motor that creates tactile haptic feedback."},
-            {w: "VIRTUAL MACHINE", d: "Software emulation of a full computer system."},
-            {w: "VOLTAGE", d: "Electrical pressure in a circuit (Volts)."},
-            {w: "VOLUME BUTTONS", d: "Physical keys to adjust audio output levels."},
-            {w: "VPN", d: "Virtual Private Network for secure browsing."},
-            {w: "W-PANE", d: "Screen architecture used in foldable hardware."},
-            {w: "WATER DAMAGE", d: "Corrosion caused by liquid entering hardware."},
-            {w: "WEBSITE", d: "Collection of web pages under one domain name."},
-            {w: "WI-FI", d: "Wireless networking protocol (802.11 standards)."},
-            {w: "WI-FI IC", d: "Chip controlling all wireless internet functions."},
-            {w: "WINDOW", d: "The visual frame where an app is displayed."},
-            {w: "WIREFRAME", d: "Blueprint layout for software user interfaces."},
-            {w: "WIRELESS CHARGE", d: "Power transfer via electromagnetic induction."},
-            {w: "WORM", d: "Malware that self-replicates across networks."},
-            {w: "X-RAY", d: "Inspection technique for hidden solder joints."},
-            {w: "XML", d: "Extensible Markup Language for data storage."},
-            {w: "Y-CABLE", d: "Adapter that splits one connection into two."},
-            {w: "Y-DRIVE", d: "Technical term for secondary vertical bus lanes."},
-            {w: "YELLOW SCREEN", d: "Display tint issue caused by age or glue heat."},
-            {w: "Z-HEIGHT", d: "The physical thickness of a mobile component."},
-            {w: "ZIF", d: "Zero Insertion Force connector for ribbon cables."},
-            {w: "ZIP", d: "Compressed file format to save storage space."}
-        ];
+    <div class="dict-entry" data-term="5g cellular mobile fast network mmwave">
+        <div class="term">5G</div>
+        <div class="def">The fifth generation of cellular network technology, offering multi-Gbps speeds.</div>
+    </div>
+    <div class="dict-entry" data-term="lte 4g mobile cellular network speed">
+        <div class="term">LTE</div>
+        <div class="def">Long-Term Evolution. The standard for high-speed wireless 4G communication.</div>
+    </div>
+    <div class="dict-entry" data-term="fiber optic glass light fast internet">
+        <div class="term">FIBER OPTICS</div>
+        <div class="def">Data transmission through pulses of light along thin glass fibers. Ultra-fast.</div>
+    </div>
+    <div class="dict-entry" data-term="packet loss drop network lag error">
+        <div class="term">PACKET LOSS</div>
+        <div class="def">When data segments fail to reach their destination, causing lag and stuttering.</div>
+    </div>
+    <div class="dict-entry" data-term="jitter network variation lag spike time">
+        <div class="term">JITTER</div>
+        <div class="def">The variation in time between data packets arriving; causes choppy calls/video.</div>
+    </div>
+    <div class="dict-entry" data-term="modem signal internet provider house box">
+        <div class="term">MODEM</div>
+        <div class="def">Device that converts signals from an ISP into a digital format for the router.</div>
+    </div>
+    <div class="dict-entry" data-term="router network wifi share connect devices">
+        <div class="term">ROUTER</div>
+        <div class="def">The central device that directs traffic between your home network and the internet.</div>
+    </div>
+    <div class="dict-entry" data-term="switch lan ports connect many pc network">
+        <div class="term">SWITCH</div>
+        <div class="def">A device that connects multiple computers together within one local network.</div>
+    </div>
+    <div class="dict-entry" data-term="access point wifi boost extension range">
+        <div class="term">ACCESS POINT</div>
+        <div class="def">Hardware that creates a wireless local area network (WLAN) in an office or home.</div>
+    </div>
+    <div class="dict-entry" data-term="gateway node exit network bridge internet">
+        <div class="term">GATEWAY</div>
+        <div class="def">The entry/exit point for data moving between different network systems.</div>
+    </div>
+    <div class="dict-entry" data-term="ipv4 legacy ip numerical address limited">
+        <div class="term">IPv4</div>
+        <div class="def">The 4th version of IP, using a 32-bit address (e.g., 192.168.1.1).</div>
+    </div>
+    <div class="dict-entry" data-term="ipv6 new ip address unlimited infinity">
+        <div class="term">IPv6</div>
+        <div class="def">The 6th version of IP, using 128-bit addresses to support trillions of devices.</div>
+    </div>
+    <div class="dict-entry" data-term="port forwarding games server open access">
+        <div class="term">PORT FORWARDING</div>
+        <div class="def">Directing external internet traffic to a specific device inside your network.</div>
+    </div>
+    <div class="dict-entry" data-term="nat network address translation router ip">
+        <div class="term">NAT</div>
+        <div class="def">A method that maps many internal private IPs to one single public IP address.</div>
+    </div>
+    <div class="dict-entry" data-term="static ip fixed address no change server">
+        <div class="term">STATIC IP</div>
+        <div class="def">An IP address that is manually set and never changes. Essential for servers.</div>
+    </div>
+    <div class="dict-entry" data-term="dynamic ip change address auto router dhcp">
+        <div class="term">DYNAMIC IP</div>
+        <div class="def">An IP address that changes automatically every time you connect to the network.</div>
+    </div>
+    <div class="dict-entry" data-term="mesh wifi whole home coverage satellite node">
+        <div class="term">MESH Wi-Fi</div>
+        <div class="def">A network system using multiple nodes to cover an entire house with Wi-Fi.</div>
+    </div>
+    <div class="dict-entry" data-term="ping time ms lag latency test check">
+        <div class="term">PING</div>
+        <div class="def">A tool to measure the time it takes for data to go to a server and back.</div>
+    </div>
+    <div class="dict-entry" data-term="throttling isp slow down data limit capped">
+        <div class="term">THROTTLING</div>
+        <div class="def">Intentional slowing of internet speed by an ISP based on data usage.</div>
+    </div>
+    <div class="dict-entry" data-term="poe power over ethernet camera cable data">
+        <div class="term">PoE</div>
+        <div class="def">Power over Ethernet. Sending both electricity and data over one Ethernet cable.</div>
+    </div>
 
-        function render(data) {
-            const list = document.getElementById('dict-list');
-            list.innerHTML = data.map(item => `
-                <div class="entry">
-                    <div class="entry-word">${item.w}</div>
-                    <div class="entry-def">${item.d}</div>
-                </div>
-            `).join('');
-            document.getElementById('term-count').innerText = `TERMS_LOADED: ${data.length}`;
-        }
+    <div class="dict-entry" data-term="html web page structure code tags">
+        <div class="term">HTML</div>
+        <div class="def">Hypertext Markup Language. The standard language for creating web pages.</div>
+    </div>
+    <div class="dict-entry" data-term="css style design color font layout web">
+        <div class="term">CSS</div>
+        <div class="def">Cascading Style Sheets. Controls the visual look and design of websites.</div>
+    </div>
+    <div class="dict-entry" data-term="javascript js web interactive logic script">
+        <div class="term">JAVASCRIPT</div>
+        <div class="def">Programming language used to make web pages interactive and dynamic.</div>
+    </div>
+    <div class="dict-entry" data-term="python code easy simple ai data script">
+        <div class="term">PYTHON</div>
+        <div class="def">High-level programming language known for being easy to read; used for AI.</div>
+    </div>
+    <div class="dict-entry" data-term="sql database query data manage tables rows">
+        <div class="term">SQL</div>
+        <div class="def">Structured Query Language. Used for managing and searching large databases.</div>
+    </div>
+    <div class="dict-entry" data-term="backend server database api code engine">
+        <div class="term">BACKEND</div>
+        <div class="def">The "server-side" of an app that handles the logic and data storage.</div>
+    </div>
+    <div class="dict-entry" data-term="frontend visual design user interface site">
+        <div class="term">FRONTEND</div>
+        <div class="def">The "client-side" of an app that the user sees and interacts with.</div>
+    </div>
+    <div class="dict-entry" data-term="full stack both front back end developer">
+        <div class="term">FULL STACK</div>
+        <div class="def">A developer who can build both the visual frontend and the logical backend.</div>
+    </div>
+    <div class="dict-entry" data-term="git version control code track changes save">
+        <div class="term">GIT</div>
+        <div class="def">A system for tracking changes in source code during software development.</div>
+    </div>
+    <div class="dict-entry" data-term="github code host cloud sharing collab open">
+        <div class="term">GITHUB</div>
+        <div class="def">A cloud-based hosting service for Git repositories and code collaboration.</div>
+    </div>
+    <div class="dict-entry" data-term="framework library react vue bootstrap tool">
+        <div class="term">FRAMEWORK</div>
+        <div class="def">A pre-built set of tools and code libraries to help build apps faster.</div>
+    </div>
+    <div class="dict-entry" data-term="responsive design mobile web desktop screen">
+        <div class="term">RESPONSIVE</div>
+        <div class="def">Web design that automatically adjusts its layout to fit different screen sizes.</div>
+    </div>
+    <div class="dict-entry" data-term="dom document object model web structure js">
+        <div class="term">DOM</div>
+        <div class="def">Document Object Model. The tree structure that JS uses to interact with HTML.</div>
+    </div>
+    <div class="dict-entry" data-term="json data format api object web simple">
+        <div class="term">JSON</div>
+        <div class="def">JavaScript Object Notation. A lightweight data-interchange format easy for humans.</div>
+    </div>
+    <div class="dict-entry" data-term="xml data format legacy tags metalanguage">
+        <div class="term">XML</div>
+        <div class="def">Extensible Markup Language. An older way of storing and transporting data.</div>
+    </div>
+    <div class="dict-entry" data-term="endpoint api url link data connect path">
+        <div class="term">ENDPOINT</div>
+        <div class="def">A specific URL where an API receives requests and sends data back.</div>
+    </div>
+    <div class="dict-entry" data-term="encryption secret key lock code secure private">
+        <div class="term">ENCRYPTION</div>
+        <div class="def">Mathematical scrambling of data so that it cannot be read without a key.</div>
+    </div>
+    <div class="dict-entry" data-term="salt security hashing random password extra">
+        <div class="term">SALTING</div>
+        <div class="def">Adding random data to a password hash to make it much harder to crack.</div>
+    </div>
+    <div class="dict-entry" data-term="brute force attack crack password hack try">
+        <div class="term">BRUTE FORCE</div>
+        <div class="def">A hacking method that tries every possible password combination until one works.</div>
+    </div>
+    <div class="dict-entry" data-term="phishing fake email scam hack stolen login">
+        <div class="term">PHISHING</div>
+        <div class="def">Fraudulent emails or sites designed to trick users into giving their logins.</div>
+    </div>
 
-        function search() {
-            const query = document.getElementById('search-input').value.toUpperCase();
-            const filtered = JDT_DATABASE.filter(item => 
-                item.w.includes(query) || item.d.toUpperCase().includes(query)
-            );
-            render(filtered);
-        }
+    <div class="dict-entry" data-term="bit binary data 01 smallest unit">
+        <div class="term">BIT</div>
+        <div class="def">The smallest unit of data in a computer, either a 0 or a 1.</div>
+    </div>
+    <div class="dict-entry" data-term="byte 8 bits data size storage unit">
+        <div class="term">BYTE</div>
+        <div class="def">A group of 8 bits. The standard unit used to measure data size.</div>
+    </div>
+    <div class="dict-entry" data-term="kilobyte kb 1000 bytes data size">
+        <div class="term">KILOBYTE (KB)</div>
+        <div class="def">Equal to 1,000 bytes (or 1,024 in binary terms). Small data unit.</div>
+    </div>
+    <div class="dict-entry" data-term="megabyte mb 1000 kb data size photo">
+        <div class="term">MEGABYTE (MB)</div>
+        <div class="def">1,000 Kilobytes. Standard size for a high-quality photo or short song.</div>
+    </div>
+    <div class="dict-entry" data-term="gigabyte gb 1000 mb data size movie ram">
+        <div class="term">GIGABYTE (GB)</div>
+        <div class="def">1,000 Megabytes. Used to measure RAM capacity and HD storage.</div>
+    </div>
+    <div class="dict-entry" data-term="terabyte tb 1000 gb data size drive big">
+        <div class="term">TERABYTE (TB)</div>
+        <div class="def">1,000 Gigabytes. Current standard for large internal/external hard drives.</div>
+    </div>
+    <div class="dict-entry" data-term="petabyte pb huge data server farm storage">
+        <div class="term">PETABYTE (PB)</div>
+        <div class="def">1,000 Terabytes. Used by large data centers and server farms like Google.</div>
+    </div>
+    <div class="dict-entry" data-term="quantum computing qubits future power atom">
+        <div class="term">QUANTUM COMPUTING</div>
+        <div class="def">Computing using qubits that can exist in multiple states at once. Ultra-fast.</div>
+    </div>
+    <div class="dict-entry" data-term="singularity ai future robot evolution power">
+        <div class="term">SINGULARITY</div>
+        <div class="def">A hypothetical point where AI becomes smarter than humans and evolves itself.</div>
+    </div>
+    <div class="dict-entry" data-term="dark web hidden internet tor onion private">
+        <div class="term">DARK WEB</div>
+        <div class="def">Part of the internet not indexed by search engines, requiring Tor to access.</div>
+    </div>
+    <div class="dict-entry" data-term="iot internet of things smart house fridge">
+        <div class="term">IoT</div>
+        <div class="def">Internet of Things. Connecting everyday items (fridges, lights) to the web.</div>
+    </div>
+    <div class="dict-entry" data-term="firmware update patch fix software hardware">
+        <div class="term">PATCH</div>
+        <div class="def">A software update designed to fix bugs or security holes in an existing app.</div>
+    </div>
+    <div class="dict-entry" data-term="legacy system old tech outdated computer">
+        <div class="term">LEGACY</div>
+        <div class="def">Old or outdated technology that is still in use but no longer supported.</div>
+    </div>
+    <div class="dict-entry" data-term="motherboard main board mobo pc computer">
+        <div class="term">MOTHERBOARD</div>
+        <div class="def">The main circuit board that connects all PC parts together (CPU, RAM, GPU).</div>
+    </div>
+    <div class="dict-entry" data-term="peripheral mouse keyboard mouse monitor extra">
+        <div class="term">PERIPHERAL</div>
+        <div class="def">External devices connected to a computer (keyboard, mouse, printer).</div>
+    </div>
+    <div class="dict-entry" data-term="pixel picture element dot screen resolution">
+        <div class="term">PIXEL</div>
+        <div class="def">The smallest unit of a digital image or display that can be controlled.</div>
+    </div>
+    <div class="dict-entry" data-term="resolution 4k 1080p hd pixels screen density">
+        <div class="term">RESOLUTION</div>
+        <div class="def">The number of pixels displayed on a screen (e.g., 1920x1080).</div>
+    </div>
+    <div class="dict-entry" data-term="aspect ratio 16:9 4:3 widescreen square">
+        <div class="term">ASPECT RATIO</div>
+        <div class="def">The proportional relationship between a display's width and height.</div>
+    </div>
+    <div class="dict-entry" data-term="refresh rate 120hz 60hz gaming smooth screen">
+        <div class="term">REFRESH RATE</div>
+        <div class="def">Number of times per second a screen updates its image, measured in Hertz.</div>
+    </div>
+    <div class="dict-entry" data-term="fps frames per second game smooth video">
+        <div class="term">FPS</div>
+        <div class="def">Frames Per Second. Measure of how smooth a video or game looks.</div>
+    </div>
+    <div class="dict-entry" data-term="ups uninterrupted power supply backup battery">
+        <div class="term">UPS</div>
+        <div class="def">Uninterruptible Power Supply. A battery backup that keeps PCs running during outages.</div>
+    </div>
+    <div class="dict-entry" data-term="raid backup drive storage mirror data redun">
+        <div class="term">RAID</div>
+        <div class="def">Redundant Array of Independent Disks. Using multiple drives to protect data.</div>
+    </div>
+    <div class="dict-entry" data-term="ssd storage flash fast drive no moving parts">
+        <div class="term">SSD</div>
+        <div class="def">Solid State Drive. Storage using flash memory; much faster than old disk drives.</div>
+    </div>
+    <div class="dict-entry" data-term="nas network storage cloud house drive sharing">
+        <div class="term">NAS</div>
+        <div class="def">Network Attached Storage. A hard drive connected to your network for file sharing.</div>
+    </div>
+    <div class="dict-entry" data-term="blockchain crypto decentral secure ledger">
+        <div class="term">BLOCKCHAIN</div>
+        <div class="def">A decentralized digital ledger used for secure record-keeping (Crypto).</div>
+    </div>
+    <div class="dict-entry" data-term="mining crypto gpu calculate coins bitcoin">
+        <div class="term">MINING</div>
+        <div class="def">Using computer power to process blockchain transactions and earn coins.</div>
+    </div>
+    <div class="dict-entry" data-term="ai artificial intelligence smart bot logic machine">
+        <div class="term">AI</div>
+        <div class="def">Artificial Intelligence. Computer systems that can perform tasks requiring human intelligence.</div>
+    </div>
+    <div class="dict-entry" data-term="machine learning ml data train predict ai logic">
+        <div class="term">MACHINE LEARNING</div>
+        <div class="def">A type of AI that learns from data patterns to make predictions or decisions.</div>
+    </div>
+    <div class="dict-entry" data-term="deep learning neural network brain layers ai">
+        <div class="term">DEEP LEARNING</div>
+        <div class="def">Advanced ML using multi-layered neural networks to solve complex problems.</div>
+    </div>
+    <div class="dict-entry" data-term="big data analytics huge info cloud search processing">
+        <div class="term">BIG DATA</div>
+        <div class="def">Extremely large data sets that are analyzed to reveal patterns and trends.</div>
+    </div>
 
-        render(JDT_DATABASE);
-    </script>
-</body>
-</html>
+</div>
+
+<style>
+    .dict-container { 
+        height: 65vh; 
+        overflow-y: auto; 
+        padding-right: 5px; 
+    }
+    
+    .dict-entry { 
+        background: var(--panel); 
+        border: 1px solid var(--border); 
+        padding: 12px; 
+        border-left: 3px solid #333; 
+        transition: 0.2s; 
+    }
+    
+    .dict-entry:hover { 
+        border-left-color: var(--cyan); 
+        background: rgba(255,255,255,0.03); 
+    }
+    
+    .term { 
+        font-weight: 900; 
+        font-size: 0.7rem; 
+        color: var(--cyan); 
+        margin-bottom: 5px; 
+        letter-spacing: 1px; 
+    }
+    
+    .def { 
+        font-size: 0.6rem; 
+        color: #888; 
+        line-height: 1.4; 
+    }
+    
+    /* Custom Scrollbar for the long list */
+    .dict-container::-webkit-scrollbar { width: 3px; }
+    .dict-container::-webkit-scrollbar-track { background: transparent; }
+    .dict-container::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+</style>
+
+<script>
+    function searchDict() {
+        const query = document.getElementById('dict-in').value.toLowerCase();
+        const entries = document.querySelectorAll('.dict-entry');
+        
+        entries.forEach(entry => {
+            const tags = entry.getAttribute('data-term').toLowerCase();
+            const title = entry.querySelector('.term').innerText.toLowerCase();
+            
+            if (tags.includes(query) || title.includes(query)) {
+                entry.style.display = 'block';
+            } else {
+                entry.style.display = 'none';
+            }
+        });
+    }
+</script>
