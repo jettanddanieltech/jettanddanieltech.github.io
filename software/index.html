@@ -2,41 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TECHTORIALS // SOFTWARE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JDT // SOFTWARE_MANIFEST</title>
     <style>
-        :root { --bg: #000; --blue: #33BBFF; }
-        body { background: var(--bg); color: #ccc; font-family: 'Courier New', monospace; margin: 0; }
-        .nav-header { background: #050505; border-bottom: 1px solid var(--blue); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .nav-header a { color: #eee; text-decoration: none; font-size: 12px; }
-        .nav-header .active { color: var(--blue); border-bottom: 1px solid var(--blue); }
+        :root { --cyan: #00d2ff; --bg: #000; --panel: #0a0a0a; --border: #1a1a1a; --font: 'Courier New', monospace; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: #fff; font-family: var(--font); }
+        
+        .nav-bar { position: sticky; top: 0; background: #000; width: 100%; display: flex; justify-content: center; gap: 15px; padding: 20px 0; border-bottom: 1px solid var(--border); z-index: 100; }
+        .nav-item { color: #444; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
+        
+        .container { padding: 30px 20px; max-width: 600px; margin: 0 auto; }
+        h2 { letter-spacing: 8px; text-align: center; margin-bottom: 40px; }
 
-        .container { padding: 40px; }
-        .repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .project-card { border: 1px solid #222; padding: 20px; background: #050505; transition: 0.3s; }
-        .project-card:hover { border-color: var(--blue); }
-        .tag { font-size: 10px; color: var(--blue); border: 1px solid var(--blue); padding: 2px 5px; margin-right: 5px; }
+        .soft-row { display: flex; justify-content: space-between; padding: 20px; border: 1px solid #111; margin-bottom: 10px; background: #050505; }
+        .cap-label { color: #555; font-size: 0.7rem; letter-spacing: 2px; }
+        .cap-value { color: var(--cyan); font-weight: 900; font-size: 0.85rem; }
     </style>
 </head>
 <body>
-    <div class="nav-header">
-        <a href="/" style="font-weight:bold; color:var(--blue)">[ TECHTORIALS_CORE ]</a>
-        <div style="display:flex; gap:20px;">
-            <a href="/tutorials">REPAIRS</a>
-            <a href="/software" class="active">SOFTWARE</a>
-            <a href="/techy">AI_DATABASE</a>
-            <a href="/dictionary">DICTIONARY</a>
-        </div>
-    </div>
+    <nav class="nav-bar">
+        <a href="index.html" style="color:#fff; border:1px solid #333; padding:0 5px; text-decoration:none;">HOME</a>
+        <a href="dictionary.html" class="nav-item">DICT</a>
+        <a href="hardware.html" class="nav-item">HARD</a>
+        <a href="software.html" class="nav-item" style="color:var(--cyan)">SOFT</a>
+        <a href="ai.html" class="nav-item">AI</a>
+        <a href="tutorials.html" class="nav-item">TUTS</a>
+    </nav>
 
     <div class="container">
-        <h1>PROJECT_REPOSITORY</h1>
-        <div class="repo-grid">
-            <div class="project-card">
-                <h3 style="color:#fff">J_D_OS_v4</h3>
-                <p>Custom terminal-styled web interface for tech repair documentation.</p>
-                <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
-            </div>
-            </div>
+        <h2>SOFTWARE_MANIFEST</h2>
+        
+        <div class="soft-row"><span class="cap-label">01_ROOT_ACCESS</span><span class="cap-value">GRANTED</span></div>
+        <div class="soft-row"><span class="cap-label">02_CUSTOM_KERNEL</span><span class="cap-value">ACTIVE</span></div>
+        <div class="soft-row"><span class="cap-label">03_BOOTLOADER_UNLOCK</span><span class="cap-value">AVAILABLE</span></div>
+        <div class="soft-row"><span class="cap-label">04_ENCRYPT_DECRYPT</span><span class="cap-value">STABLE</span></div>
+        <div class="soft-row"><span class="cap-label">05_FIRMWARE_FLASHER</span><span class="cap-value">READY</span></div>
+        <div class="soft-row"><span class="cap-label">06_PACKET_SNIFFER</span><span class="cap-value">ONLINE</span></div>
+        <div class="soft-row"><span class="cap-label">07_IMEI_VERIFY</span><span class="cap-value">PASS</span></div>
+        <div class="soft-row"><span class="cap-label">08_OVERCLOCK_V4</span><span class="cap-value">ENGAGED</span></div>
+        <div class="soft-row"><span class="cap-label">09_REGISTRY_MODDER</span><span class="cap-value">SYNCED</span></div>
+        <div class="soft-row"><span class="cap-label">10_PARTITION_MANAGER</span><span class="cap-value">ENABLED</span></div>
+        <div class="soft-row"><span class="cap-label">11_API_INJECTION</span><span class="cap-value">STABLE</span></div>
+        <div class="soft-row"><span class="cap-label">12_VPN_TUNNEL_JDT</span><span class="cap-value">SECURE</span></div>
+        <div class="soft-row"><span class="cap-label">13_DATA_RECOVERY_V3</span><span class="cap-value">READY</span></div>
+        <div class="soft-row"><span class="cap-label">14_OS_VIRTUAL_BOX</span><span class="cap-value">GRANTED</span></div>
+        <div class="soft-row"><span class="cap-label">15_SYSTEM_WIPE_PRO</span><span class="cap-value">STANDBY</span></div>
     </div>
 </body>
 </html>
