@@ -13,8 +13,6 @@
             --mono: 'Courier New', monospace;
         }
 
-        * { box-sizing: border-box; }
-
         body {
             background: var(--bg);
             color: #eee;
@@ -26,20 +24,15 @@
             overflow: hidden;
         }
 
-        /* TOP NAVIGATION */
+        /* NAVIGATION */
         nav {
             background: var(--panel);
             border-bottom: 1px solid var(--border);
             padding: 20px 50px;
             display: flex;
-            justify-content: flex-end; /* Pushes links to the right */
+            justify-content: flex-end;
             align-items: center;
             z-index: 100;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
         }
 
         .nav-links a {
@@ -47,36 +40,25 @@
             text-decoration: none;
             font-size: 0.7rem;
             letter-spacing: 2px;
+            margin-left: 30px;
             text-transform: uppercase;
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--cyan);
-            text-shadow: 0 0 8px var(--cyan);
-        }
+        .nav-links a:hover { color: var(--cyan); }
 
-        /* MAIN CENTER CONTENT */
+        /* MAIN HERO */
         .hero {
             flex: 1;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
         }
 
-        .logo-container {
-            text-align: center;
-            max-width: 600px;
-            padding: 20px;
-        }
-
         .main-logo-img {
             width: 100%;
-            height: auto;
             max-width: 500px;
-            /* Subtle glow effect to match the logo style */
             filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.2));
             animation: pulse 4s ease-in-out infinite;
         }
@@ -86,25 +68,48 @@
             50% { transform: scale(1.02); opacity: 1; }
         }
 
-        /* SCANLINE / CRT EFFECT */
+        /* CODEPEN QUICK-LINK BUTTON */
+        .codepen-fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #111;
+            border: 1px solid var(--border);
+            padding: 15px 25px;
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 200;
+        }
+
+        .codepen-fab:hover {
+            border-color: var(--cyan);
+            background: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+        }
+
+        .codepen-icon {
+            width: 15px;
+            height: 15px;
+            fill: var(--cyan);
+        }
+
+        /* BACKGROUND SCANLINES */
         .hero::before {
             content: " ";
             position: absolute;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 3px, 3px 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+            background-size: 100% 4px;
             pointer-events: none;
-            z-index: 2;
-        }
-
-        /* BACKGROUND DECORATION */
-        .bg-text {
-            position: absolute;
-            font-size: 0.5rem;
-            color: #0a0a0a;
-            user-select: none;
-            z-index: -1;
         }
     </style>
 </head>
@@ -121,10 +126,18 @@
     </nav>
 
     <div class="hero">
-        <div class="logo-container">
-            <img src="logo.png" alt="JETTANDDANIELTECH" class="main-logo-img">
-        </div>
+        <img src="logo.png" alt="JETTANDDANIELTECH" class="main-logo-img">
     </div>
+
+    <a href="https://codepen.io/pen/" target="_blank" class="codepen-fab">
+        <svg class="codepen-icon" viewBox="0 0 138 138">
+            <path d="M15 46L69 82L123 46L69 10L15 46Z" fill="none" stroke="currentColor" stroke-width="8"/>
+            <path d="M15 92L69 128L123 92L69 56L15 92Z" fill="none" stroke="currentColor" stroke-width="8"/>
+            <path d="M15 46V92L69 128V82L15 46Z" fill="none" stroke="currentColor" stroke-width="8"/>
+            <path d="M123 46V92L69 128V82L123 46Z" fill="none" stroke="currentColor" stroke-width="8"/>
+        </svg>
+        <span>EXECUTE_CODEPEN</span>
+    </a>
 
 </body>
 </html>
